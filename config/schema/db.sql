@@ -1,5 +1,5 @@
 CREATE TABLE `users` (
-  `id` integer PRIMARY KEY,
+  `id` integer PRIMARY KEY AUTO_INCREMENT,
   `first_name` varchar(255),
   `last_name` varchar(255),
   `email` varchar(255),
@@ -7,7 +7,7 @@ CREATE TABLE `users` (
 );
 
 CREATE TABLE `contractors` (
-  `id` integer PRIMARY KEY,
+  `id` integer PRIMARY KEY AUTO_INCREMENT,
   `first_name` varchar(255),
   `last_name` varchar(255),
   `phone_number` varchar(10),
@@ -16,7 +16,7 @@ CREATE TABLE `contractors` (
 );
 
 CREATE TABLE `projects` (
-  `id` integer PRIMARY KEY,
+  `id` integer PRIMARY KEY AUTO_INCREMENT,
   `project_name` varchar(255),
   `description` text,
   `management_tool_link` varchar(255),
@@ -28,7 +28,7 @@ CREATE TABLE `projects` (
 );
 
 CREATE TABLE `organisations` (
-  `id` integer PRIMARY KEY,
+  `id` integer PRIMARY KEY AUTO_INCREMENT,
   `business_name` varchar(255),
   `contact_first_name` varchar(255),
   `contact_last_name` varchar(255),
@@ -38,7 +38,7 @@ CREATE TABLE `organisations` (
 );
 
 CREATE TABLE `contacts` (
-  `id` integer PRIMARY KEY,
+  `id` integer PRIMARY KEY AUTO_INCREMENT,
   `first_name` varchar(255),
   `last_name` varchar(255),
   `email` varchar(255),
@@ -49,13 +49,13 @@ CREATE TABLE `contacts` (
 );
 
 CREATE TABLE `skills` (
-  `id` integer PRIMARY KEY,
+  `id` integer PRIMARY KEY AUTO_INCREMENT,
   `skill_name` text,
   `project_id` integer
 );
 
 CREATE TABLE `contractors_skills` (
-  `id` integer PRIMARY KEY,
+  `id` integer PRIMARY KEY AUTO_INCREMENT,
   `skill_id` integer
 );
 
