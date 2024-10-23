@@ -1,3 +1,9 @@
+DROP DATABASE IF EXISTS `a5_db`;
+
+CREATE DATABASE `a5_db`;
+
+USE `a5_db`;
+
 CREATE TABLE `users` (
   `id` integer PRIMARY KEY AUTO_INCREMENT,
   `first_name` varchar(255),
@@ -56,19 +62,26 @@ CREATE TABLE `skills` (
 
 CREATE TABLE `contractors_skills` (
   `id` integer PRIMARY KEY AUTO_INCREMENT,
-  `skill_id` integer
+  `skill_id` integer,
+  `contractor_id` integer
 );
 
-ALTER TABLE `projects` ADD FOREIGN KEY (`contractor_id`) REFERENCES `contractors` (`id`);
+-- Adding foreign keys
+ALTER TABLE `projects`
+  ADD FOREIGN KEY (`contractor_id`) REFERENCES `contractors` (`id`),
+  ADD FOREIGN KEY (`organisation_id`) REFERENCES `organisations` (`id`);
 
-ALTER TABLE `projects` ADD FOREIGN KEY (`organisation_id`) REFERENCES `organisations` (`id`);
+ALTER TABLE `contacts`
+  ADD FOREIGN KEY (`organisation_id`) REFERENCES `organisations` (`id`),
+  ADD FOREIGN KEY (`contractor_id`) REFERENCES `contractors` (`id`);
 
-ALTER TABLE `contacts` ADD FOREIGN KEY (`organisation_id`) REFERENCES `organisations` (`id`);
+ALTER TABLE `skills`
+  ADD FOREIGN KEY (`project_id`) REFERENCES `projects` (`id`);
 
-ALTER TABLE `contacts` ADD FOREIGN KEY (`contractor_id`) REFERENCES `contractors` (`id`);
+ALTER TABLE `contractors_skills`
+  ADD FOREIGN KEY (`skill_id`) REFERENCES `skills` (`id`),
+  ADD FOREIGN KEY (`contractor_id`) REFERENCES `contractors` (`id`);
 
-ALTER TABLE `skills` ADD FOREIGN KEY (`project_id`) REFERENCES `projects` (`id`);
+ALTER TABLE `contractors`
+  ADD FOREIGN KEY (`skillset_id`) REFERENCES `contractors_skills` (`id`);
 
-ALTER TABLE `skills` ADD FOREIGN KEY (`id`) REFERENCES `contractors_skills` (`skill_id`);
-
-ALTER TABLE `contractors` ADD FOREIGN KEY (`skillset_id`) REFERENCES `contractors_skills` (`id`);
