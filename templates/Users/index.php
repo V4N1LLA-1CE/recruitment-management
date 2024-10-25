@@ -1,4 +1,5 @@
 <?php
+
 /**
  * @var \App\View\AppView $this
  * @var iterable<\App\Model\Entity\User> $users
@@ -20,17 +21,17 @@
             </thead>
             <tbody>
                 <?php foreach ($users as $user): ?>
-                <tr>
-                    <td><?= $this->Number->format($user->id) ?></td>
-                    <td><?= h($user->first_name) ?></td>
-                    <td><?= h($user->last_name) ?></td>
-                    <td><?= h($user->email) ?></td>
-                    <td class="actions">
-                        <?= $this->Html->link(__('View'), ['action' => 'view', $user->id]) ?>
-                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id]) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?>
-                    </td>
-                </tr>
+                    <tr>
+                        <td><?= $this->Number->format($user->id) ?></td>
+                        <td><?= h($user->first_name) ?></td>
+                        <td><?= h($user->last_name) ?></td>
+                        <td><?= h($user->email) ?></td>
+                        <td class="actions">
+                            <?= $this->Html->link(__('View'), ['action' => 'view', $user->id]) ?>
+                            <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id]) ?>
+                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id)]) ?>
+                        </td>
+                    </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
