@@ -48,6 +48,9 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
         <div class="top-nav-links">
             <a target="_blank" rel="noopener" href="https://book.cakephp.org/5/">Documentation</a>
             <a target="_blank" rel="noopener" href="https://api.cakephp.org/">API</a>
+            <?php if ($this->Identity->isLoggedIn()): ?>
+                <a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'logout']) ?>"><button class="btn btn-danger">Logout</button></a>
+            <?php endif; ?>
         </div>
     </nav>
     <main class="main">
