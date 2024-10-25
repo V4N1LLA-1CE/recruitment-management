@@ -113,6 +113,8 @@ class UsersController extends AppController
         $result = $this->Authentication->getResult();
         // regardless of POST or GET, redirect if user is logged in
         if ($result && $result->isValid()) {
+            $this->Flash->success('Login successful!');
+
             // redirect to /projects after login success
             $redirect = $this->request->getQuery('redirect', [
                 'controller' => 'Projects',
@@ -134,6 +136,7 @@ class UsersController extends AppController
         if ($result && $result->isValid()) {
             $this->Authentication->logout();
 
+            $this->Flash->error(__('You have been logged out'));
             return $this->redirect(['controller' => 'Users', 'action' => 'login']);
         }
     }

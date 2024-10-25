@@ -65,6 +65,22 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
     <!-- Bootstrap Scripts -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
     <?= $this->fetch('script') ?>
+
+    <!-- Flash message auto-hide after 4 seconds -->
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                const messages = document.getElementsByClassName('message');
+                Array.from(messages).forEach(function(message) {
+                    message.style.transition = 'opacity 0.5s ease';
+                    message.style.opacity = '0';
+                    setTimeout(function() {
+                        message.remove();
+                    }, 500);
+                });
+            }, 4000);
+        });
+    </script>
 </body>
 
 </html>
