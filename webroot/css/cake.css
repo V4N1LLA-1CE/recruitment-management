@@ -95,7 +95,7 @@ th a,
     border-radius: 0.4rem;
     /* Thanks Stripe */
     box-shadow: 0 7px 14px 0 rgba(60, 66, 87, 0.1),
-        0 3px 6px 0 rgba(0, 0, 0, 0.07);
+    0 3px 6px 0 rgba(0, 0, 0, 0.07);
 }
 .content form {
     margin: 0;
@@ -271,8 +271,8 @@ input[type='color'] {
     justify-content: center;
 }
 
+/* Responsive adjustments */
 @media screen and (max-width: 640px) {
-    /* Fix milligram not having a responsive column system */
     .row .column[class*='column-'] {
         flex: 0 0 100%;
         max-width: 100%
@@ -296,4 +296,44 @@ input[type='color'] {
     .desc:after {
         content: " \2190";
     }
+}
+
+/* Custom table styling for DataTables */
+.data-table, .data-table th, .data-table td {
+    border: 1px solid #dee2e6;
+    padding: 12px 15px;
+    text-align: left;
+}
+
+.data-table {
+    border-collapse: collapse;
+    margin-top: 20px;
+    width: 100%;
+}
+
+/* Column-specific widths */
+.data-table th:nth-child(1),
+.data-table td:nth-child(1) {
+    width: 5%; /* ID column */
+}
+
+.data-table th:nth-child(2),
+.data-table td:nth-child(2) {
+    width: 20%; /* Business Name column */
+}
+
+/* Additional padding and styling for table headers */
+.data-table th {
+    background-color: #f8f9fa;
+    font-weight: bold;
+}
+
+/* Customize font sizes for better readability */
+.data-table td, .data-table th {
+    font-size: 0.9rem;
+}
+
+/* Optional: Hover effect for table rows */
+.data-table tbody tr:hover {
+    background-color: #f1f1f1;
 }
