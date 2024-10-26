@@ -103,17 +103,39 @@ $cakeDescription = 'CakePHP with SB Admin';
 
 
     <!-- SB Admin Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/4.1.4/js/sb-admin-2.min.js"></script>
+    <?= $this->Html->script('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js') ?>
+    <?= $this->Html->script('https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js') ?>
+    <?= $this->Html->script('https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/4.1.4/js/sb-admin-2.min.js') ?>
 
     <!-- DataTables Scripts -->
-    <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
-    <script src="https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js"></script>
+    <?= $this->Html->script('https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js') ?>
+    <?= $this->Html->script('https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js') ?>
 
     <script>
         $(document).ready(function() {
-            $('.data-table').DataTable();
+            $('#dataTable').DataTable({
+                // Enable search/filter
+                searching: true,
+                // Enable length change dropdown
+                lengthChange: true,
+                // Enable pagination
+                paging: true,
+                // Enable sorting
+                ordering: true,
+                // Default page length
+                pageLength: 10,
+                // Length menu options
+                lengthMenu: [
+                    [10, 25, 50, -1],
+                    [10, 25, 50, "All"]
+                ],
+                // Enable info display
+                info: true,
+                // Order by first column ascending by default
+                order: [
+                    [0, 'asc']
+                ]
+            });
         });
     </script>
 
