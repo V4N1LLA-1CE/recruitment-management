@@ -1,91 +1,72 @@
 <?php
 
-$cakeDescription = 'CakePHP with SB Admin';
+/**
+ * CakePHP(tm) : Rapid Development Framework (https://cakephp.org)
+ * Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ *
+ * Licensed under The MIT License
+ * For full copyright and license information, please see the LICENSE.txt
+ * Redistributions of files must retain the above copyright notice.
+ *
+ * @copyright     Copyright (c) Cake Software Foundation, Inc. (https://cakefoundation.org)
+ * @link          https://cakephp.org CakePHP(tm) Project
+ * @since         0.10.0
+ * @license       https://opensource.org/licenses/mit-license.php MIT License
+ * @var \App\View\AppView $this
+ */
+
+$cakeDescription = 'CakePHP: the rapid development php framework';
 ?>
 <!DOCTYPE html>
-<html lang="en">
+<html>
 
 <head>
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?= $cakeDescription ?>: <?= $this->fetch('title') ?></title>
+    <title>
+        <?= $cakeDescription ?>:
+        <?= $this->fetch('title') ?>
+    </title>
 
-    <!-- SB Admin CSS -->
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/4.1.4/css/sb-admin-2.min.css" rel="stylesheet">
-
-    <!-- DataTables CSS -->
-    <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
     <?= $this->Html->meta('icon') ?>
+
+    <?= $this->Html->css(['normalize.min', 'milligram.min', 'fonts', 'cake']) ?>
+
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
+    <?= $this->fetch('script') ?>
 </head>
 
-<body id="page-top">
-
-    <!-- Page Wrapper -->
-    <div id="wrapper">
-
-        <!-- Sidebar -->
-        <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= $this->Url->build('/') ?>">
-                <div class="sidebar-brand-icon">
-                    <i class="fas fa-laugh-wink"></i>
-                </div>
-                <div class="sidebar-brand-text mx-3">CakePHP</div>
-            </a>
-
-            <hr class="sidebar-divider my-0">
-            <li class="nav-item">
-                <a class="nav-link" href="<?= $this->Url->build('/') ?>">
-                    <i class="fas fa-fw fa-home"></i>
-                    <span>Home</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="https://book.cakephp.org/5/" target="_blank">
-                    <i class="fas fa-fw fa-book"></i>
-                    <span>Documentation</span>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="https://api.cakephp.org/" target="_blank">
-                    <i class="fas fa-fw fa-code"></i>
-                    <span>API</span>
-                </a>
-            </li>
-            <?php if ($this->Identity->isLoggedIn()): ?>
-                <li class="nav-item">
-                    <a class="nav-link" href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'logout']) ?>">
-                        <i class="fas fa-fw fa-sign-out-alt"></i>
-                        <span>Logout</span>
-                    </a>
-                </li>
-            <?php endif; ?>
-            <hr class="sidebar-divider">
-        </ul>
-
-        <!-- Content Wrapper -->
-        <div id="content-wrapper" class="d-flex flex-column">
-            <div id="content">
-                <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                            <?= $this->Html->link(__('Logout'), ['controller' => 'Users', 'action' => 'logout'], ['class' => 'btn btn-danger']) ?>
-                        </li>
-                    </ul>
-                </nav>
-
-                <!-- Main Content -->
-                <div class="container-fluid">
-                    <?= $this->Flash->render() ?>
-                    <?= $this->fetch('content') ?>
-                </div>
-            </div>
+<body>
+    <nav class="top-nav">
+        <div class="top-nav-title">
+            <a href="<?= $this->Url->build('/') ?>"><span>Cake</span>PHP</a>
         </div>
-    </div>
+        <div class="top-nav-links">
+            <a target="_blank" rel="noopener" href="https://book.cakephp.org/5/">Documentation</a>
+            <a target="_blank" rel="noopener" href="https://api.cakephp.org/">API</a>
+            <?php if ($this->Identity->isLoggedIn()): ?>
+                <a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'logout']) ?>"><button class="btn btn-danger">Logout</button></a>
+            <?php endif; ?>
+        </div>
+    </nav>
+    <main class="main">
+        <div class="container">
+            <?= $this->Flash->render() ?>
+            <?= $this->fetch('content') ?>
+        </div>
+    </main>
+    <footer>
+    </footer>
 
-    <!-- DO NOT DELETE: Flash message auto-hide after 4 seconds -->
+    <!-- Bootstrap Scripts -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+    <?= $this->fetch('script') ?>
+
+    <!-- Flash message auto-hide after 4 seconds -->
     <script>
         document.addEventListener('DOMContentLoaded', () => {
             setTimeout(() => {
@@ -100,46 +81,6 @@ $cakeDescription = 'CakePHP with SB Admin';
             }, 4000);
         });
     </script>
-
-
-    <!-- SB Admin Scripts -->
-    <?= $this->Html->script('https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js') ?>
-    <?= $this->Html->script('https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js') ?>
-    <?= $this->Html->script('https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/4.1.4/js/sb-admin-2.min.js') ?>
-
-    <!-- DataTables Scripts -->
-    <?= $this->Html->script('https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js') ?>
-    <?= $this->Html->script('https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js') ?>
-
-    <script>
-        $(document).ready(function() {
-            $('#dataTable').DataTable({
-                // Enable search/filter
-                searching: true,
-                // Enable length change dropdown
-                lengthChange: true,
-                // Enable pagination
-                paging: true,
-                // Enable sorting
-                ordering: true,
-                // Default page length
-                pageLength: 10,
-                // Length menu options
-                lengthMenu: [
-                    [10, 25, 50, -1],
-                    [10, 25, 50, "All"]
-                ],
-                // Enable info display
-                info: true,
-                // Order by first column ascending by default
-                order: [
-                    [0, 'asc']
-                ]
-            });
-        });
-    </script>
-
-    <?= $this->fetch('script') ?>
 </body>
 
 </html>
