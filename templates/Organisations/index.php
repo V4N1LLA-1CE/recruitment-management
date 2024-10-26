@@ -1,8 +1,10 @@
 <?php
+
 /**
  * @var \App\View\AppView $this
  * @var iterable<\App\Model\Entity\Organisation> $organisations
  */
+$this->layout = 'admin';
 ?>
 <div class="organisations index content">
     <?= $this->Html->link(__('New Organisation'), ['action' => 'add'], ['class' => 'button float-right']) ?>
@@ -22,19 +24,19 @@
             </thead>
             <tbody>
                 <?php foreach ($organisations as $organisation): ?>
-                <tr>
-                    <td><?= $this->Number->format($organisation->id) ?></td>
-                    <td><?= h($organisation->business_name) ?></td>
-                    <td><?= h($organisation->contact_first_name) ?></td>
-                    <td><?= h($organisation->contact_last_name) ?></td>
-                    <td><?= h($organisation->contact_email) ?></td>
-                    <td><?= h($organisation->current_website) ?></td>
-                    <td class="actions">
-                        <?= $this->Html->link(__('View'), ['action' => 'view', $organisation->id]) ?>
-                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $organisation->id]) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $organisation->id], ['confirm' => __('Are you sure you want to delete # {0}?', $organisation->id)]) ?>
-                    </td>
-                </tr>
+                    <tr>
+                        <td><?= $this->Number->format($organisation->id) ?></td>
+                        <td><?= h($organisation->business_name) ?></td>
+                        <td><?= h($organisation->contact_first_name) ?></td>
+                        <td><?= h($organisation->contact_last_name) ?></td>
+                        <td><?= h($organisation->contact_email) ?></td>
+                        <td><?= h($organisation->current_website) ?></td>
+                        <td class="actions">
+                            <?= $this->Html->link(__('View'), ['action' => 'view', $organisation->id]) ?>
+                            <?= $this->Html->link(__('Edit'), ['action' => 'edit', $organisation->id]) ?>
+                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $organisation->id], ['confirm' => __('Are you sure you want to delete # {0}?', $organisation->id)]) ?>
+                        </td>
+                    </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>

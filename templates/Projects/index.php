@@ -4,6 +4,7 @@
  * @var \App\View\AppView $this
  * @var iterable<\App\Model\Entity\Project> $projects
  */
+$this->layout = 'admin';
 ?>
 <div class="projects index content p-5">
     <?= $this->Html->link(__('Create Project'), ['action' => 'add'], ['class' => 'btn btn-secondary float-right']) ?>

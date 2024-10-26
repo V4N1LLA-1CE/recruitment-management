@@ -1,8 +1,10 @@
 <?php
+
 /**
  * @var \App\View\AppView $this
  * @var iterable<\App\Model\Entity\Skill> $skills
  */
+$this->layout = 'admin';
 ?>
 <div class="skills index content">
     <?= $this->Html->link(__('New Skill'), ['action' => 'add'], ['class' => 'button float-right']) ?>
@@ -17,14 +19,14 @@
             </thead>
             <tbody>
                 <?php foreach ($skills as $skill): ?>
-                <tr>
-                    <td><?= $this->Number->format($skill->id) ?></td>
-                    <td class="actions">
-                        <?= $this->Html->link(__('View'), ['action' => 'view', $skill->id]) ?>
-                        <?= $this->Html->link(__('Edit'), ['action' => 'edit', $skill->id]) ?>
-                        <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $skill->id], ['confirm' => __('Are you sure you want to delete # {0}?', $skill->id)]) ?>
-                    </td>
-                </tr>
+                    <tr>
+                        <td><?= $this->Number->format($skill->id) ?></td>
+                        <td class="actions">
+                            <?= $this->Html->link(__('View'), ['action' => 'view', $skill->id]) ?>
+                            <?= $this->Html->link(__('Edit'), ['action' => 'edit', $skill->id]) ?>
+                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $skill->id], ['confirm' => __('Are you sure you want to delete # {0}?', $skill->id)]) ?>
+                        </td>
+                    </tr>
                 <?php endforeach; ?>
             </tbody>
         </table>
