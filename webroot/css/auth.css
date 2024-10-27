@@ -15,11 +15,6 @@ body {
     justify-content: center;
     align-items: center;
     height: 100dvh;
-    border: 2px solid black;
-}
-
-.bold {
-    font-weight: 700;
 }
 
 .contact-anchor {

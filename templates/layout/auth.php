@@ -18,7 +18,6 @@
 
     <?= $this->Html->meta('icon') ?>
 
-    <?= $this->Html->css(['normalize.min', 'milligram.min', 'fonts', 'cake']) ?>
 
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
@@ -26,10 +25,12 @@
 
     <?= $this->Html->css('auth') ?>
     <?= $this->Html->css('global') ?>
+    <?= $this->Html->css('flash') ?>
+
 </head>
 
 <body>
-    <div class="content-container">
+    <div class="content-container m-5 p-5">
         <div class="page-content ">
             <?= $this->Flash->render() ?>
             <?= $this->fetch('content') ?>

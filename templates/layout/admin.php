@@ -21,9 +21,13 @@ $cakeDescription = 'CakePHP with SB Admin';
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
 
     <?= $this->Html->meta('icon') ?>
+
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
+
+    <?= $this->Html->css('flash') ?>
     <?= $this->Html->css('global') ?>
+
 
 </head>
 
