@@ -7,7 +7,7 @@
 $this->layout = 'admin';
 ?>
 <div class="users index content">
-    <?= $this->Html->link(__('Create new user'), ['action' => 'add'], ['class' => 'btn btn-secondary float-right']) ?>
+    <?= $this->Html->link(__('Create new user'), ['action' => 'add'], ['class' => 'btn btn-primary float-right']) ?>
     <h3><?= __('Users') ?></h3>
     <div class="my-4">
         <div class="table-responsive">

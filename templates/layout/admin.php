@@ -64,9 +64,17 @@ $cakeDescription = 'CakePHP with SB Admin';
                 <span>Contractors</span>
                 </a>
             </li>
-            <hr class="sidebar-divider my-0">
-
             <li class="nav-item">
+                <a class="nav-link" href="<?= $this->Url->build(['controller' => 'Contacts', 'action' => 'index']) ?>" />
+                <i class="fa-solid fa-envelope"></i>
+                <span>Messages</span>
+                </a>
+            </li>
+            <hr class="sidebar-divider my-0 ">
+
+            <hr class="sidebar-divider mt-auto mb-0">
+
+            <li class="nav-item ">
                 <a class="nav-link" href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'index']) ?>" />
                 <i class="fa-solid fa-user-shield"></i>
                 <span>Users</span>

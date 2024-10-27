@@ -7,7 +7,7 @@
 $this->layout = 'admin';
 ?>
 <div class="skills index content">
-    <?= $this->Html->link(__('New Skill'), ['action' => 'add'], ['class' => 'btn btn-secondary float-right']) ?>
+    <?= $this->Html->link(__('New Skill'), ['action' => 'add'], ['class' => 'btn btn-primary float-right']) ?>
     <h3><?= __('Skills') ?></h3>
     <div class="my-4">
         <div class="table-responsive">
