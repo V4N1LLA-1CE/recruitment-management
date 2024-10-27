@@ -13,12 +13,18 @@ $cakeDescription = 'CakePHP with SB Admin';
     <!-- SB Admin CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/4.1.4/css/sb-admin-2.min.css" rel="stylesheet">
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:ital,wght@0,100..800;1,100..800&family=Titillium+Web:ital,wght@0,200;0,300;0,400;0,600;0,700;0,900;1,200;1,300;1,400;1,600;1,700&display=swap" rel="stylesheet">
+
     <!-- DataTables CSS -->
     <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/dataTables.bootstrap5.min.css">
 
     <?= $this->Html->meta('icon') ?>
     <?= $this->fetch('meta') ?>
     <?= $this->fetch('css') ?>
+    <?= $this->Html->css('global') ?>
+
 </head>
 
 <body id="page-top">
@@ -32,7 +38,7 @@ $cakeDescription = 'CakePHP with SB Admin';
                 <div class="sidebar-brand-icon">
                     <i class="fas fa-laugh-wink"></i>
                 </div>
-                <div class="sidebar-brand-text mx-3">CakePHP</div>
+                <div class="sidebar-brand-text mx-3">Admin Panel</div>
             </a>
 
             <hr class="sidebar-divider my-0">
@@ -110,6 +116,8 @@ $cakeDescription = 'CakePHP with SB Admin';
     <!-- DataTables Scripts -->
     <?= $this->Html->script('https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js') ?>
     <?= $this->Html->script('https://cdn.datatables.net/1.11.5/js/dataTables.bootstrap5.min.js') ?>
+
+    <script src="https://kit.fontawesome.com/4a036d9063.js" crossorigin="anonymous"></script>
 
     <script>
         $(document).ready(function() {
