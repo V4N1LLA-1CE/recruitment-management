@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller;
@@ -10,6 +11,13 @@ namespace App\Controller;
  */
 class ContactsController extends AppController
 {
+    public function beforeFilter(\Cake\Event\EventInterface $event)
+    {
+        parent::beforeFilter($event);
+        // Configure the login action to not require authentication, preventing
+        // the infinite redirect loop issue
+        $this->Authentication->addUnauthenticatedActions(['add']);
+    }
     /**
      * Index method
      *
