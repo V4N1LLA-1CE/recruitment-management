@@ -7,46 +7,38 @@
 $this->layout = 'admin';
 ?>
 <div class="contractors index content">
-    <?= $this->Html->link(__('New Contractor'), ['action' => 'add'], ['class' => 'button float-right']) ?>
+    <?= $this->Html->link(__('Create New Contractor'), ['action' => 'add'], ['class' => 'btn btn-secondary float-right']) ?>
     <h3><?= __('Contractors') ?></h3>
-    <div class="table-responsive">
-        <table id="dataTable" class="table table-bordered" width="100%" cellspacing="0">
-            <thead>
-                <tr>
-                    <th><?= $this->Paginator->sort('id') ?></th>
-                    <th><?= $this->Paginator->sort('first_name') ?></th>
-                    <th><?= $this->Paginator->sort('last_name') ?></th>
-                    <th><?= $this->Paginator->sort('phone_number') ?></th>
-                    <th><?= $this->Paginator->sort('contractor_email') ?></th>
-                    <th class="actions"><?= __('Actions') ?></th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php foreach ($contractors as $contractor): ?>
+    <div class="my-4">
+        <div class="table-responsive">
+            <table id="dataTable" class="table table-bordered" width="100%" cellspacing="0">
+                <thead>
                     <tr>
-                        <td><?= $this->Number->format($contractor->id) ?></td>
-                        <td><?= h($contractor->first_name) ?></td>
-                        <td><?= h($contractor->last_name) ?></td>
-                        <td><?= h($contractor->phone_number) ?></td>
-                        <td><?= h($contractor->contractor_email) ?></td>
-                        <td class="actions">
-                            <?= $this->Html->link(__('View'), ['action' => 'view', $contractor->id]) ?>
-                            <?= $this->Html->link(__('Edit'), ['action' => 'edit', $contractor->id]) ?>
-                            <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $contractor->id], ['confirm' => __('Are you sure you want to delete # {0}?', $contractor->id)]) ?>
-                        </td>
+                        <th>ID</th>
+                        <th>First Name</th>
+                        <th>Last Name</th>
+                        <th>Phone Number</th>
+                        <th>Contractor Email</th>
+                        <th class="actions"><?= __('Actions') ?></th>
                     </tr>
-                <?php endforeach; ?>
-            </tbody>
-        </table>
-    </div>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->first('<< ' . __('first')) ?>
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-            <?= $this->Paginator->last(__('last') . ' >>') ?>
-        </ul>
-        <p><?= $this->Paginator->counter(__('Page {{page}} of {{pages}}, showing {{current}} record(s) out of {{count}} total')) ?></p>
+                </thead>
+                <tbody>
+                    <?php foreach ($contractors as $contractor): ?>
+                        <tr>
+                            <td><?= $this->Number->format($contractor->id) ?></td>
+                            <td><?= h($contractor->first_name) ?></td>
+                            <td><?= h($contractor->last_name) ?></td>
+                            <td><?= h($contractor->phone_number) ?></td>
+                            <td><?= h($contractor->contractor_email) ?></td>
+                            <td class="actions">
+                                <?= $this->Html->link(__('View'), ['action' => 'view', $contractor->id]) ?>
+                                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $contractor->id]) ?>
+                                <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $contractor->id], ['confirm' => __('Are you sure you want to delete # {0}?', $contractor->id)]) ?>
+                            </td>
+                        </tr>
+                    <?php endforeach; ?>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
