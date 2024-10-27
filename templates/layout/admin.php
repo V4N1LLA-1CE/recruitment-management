@@ -40,7 +40,7 @@ $cakeDescription = 'CakePHP with SB Admin';
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
             <a class="sidebar-brand d-flex align-items-center justify-content-center" href="<?= $this->Url->build('/') ?>">
                 <div class="sidebar-brand-icon">
-                    <i class="fas fa-laugh-wink"></i>
+                    <i class="fa-solid fa-wrench"></i>
                 </div>
                 <div class="sidebar-brand-text mx-3">Admin Panel</div>
             </a>
@@ -81,7 +81,6 @@ $cakeDescription = 'CakePHP with SB Admin';
                 <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <?= $this->Html->link(__('Logout'), ['controller' => 'Users', 'action' => 'logout'], ['class' => 'btn btn-danger']) ?>
                         </li>
                     </ul>
                 </nav>
