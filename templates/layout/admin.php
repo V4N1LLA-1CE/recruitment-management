@@ -48,22 +48,31 @@ $cakeDescription = 'CakePHP with SB Admin';
             <hr class="sidebar-divider my-0">
             <li class="nav-item">
                 <a class="nav-link" href="<?= $this->Url->build('/') ?>">
-                    <i class="fas fa-fw fa-home"></i>
-                    <span>Home</span>
+                    <i class="fa-solid fa-diagram-project"></i>
+                    <span>Projects</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="https://book.cakephp.org/5/" target="_blank">
-                    <i class="fas fa-fw fa-book"></i>
-                    <span>Documentation</span>
+                <a class="nav-link" href="<?= $this->Url->build(['controller' => 'Organisations', 'action' => 'index']) ?>">
+                    <i class="fa-solid fa-building"></i>
+                    <span>Organisations</span>
                 </a>
             </li>
             <li class="nav-item">
-                <a class="nav-link" href="https://api.cakephp.org/" target="_blank">
-                    <i class="fas fa-fw fa-code"></i>
-                    <span>API</span>
+                <a class="nav-link" href="<?= $this->Url->build(['controller' => 'Contractors', 'action' => 'index']) ?>" />
+                <i class=" fa-solid fa-users"></i>
+                <span>Contractors</span>
                 </a>
             </li>
+            <hr class="sidebar-divider my-0">
+
+            <li class="nav-item">
+                <a class="nav-link" href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'index']) ?>" />
+                <i class="fa-solid fa-user-shield"></i>
+                <span>Users</span>
+                </a>
+            </li>
+
             <?php if ($this->Identity->isLoggedIn()): ?>
                 <li class="nav-item">
                     <a class="nav-link" href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'logout']) ?>">
