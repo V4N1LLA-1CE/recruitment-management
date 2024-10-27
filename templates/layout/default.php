@@ -46,20 +46,8 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
 </head>
 
 <body>
-    <nav class="top-nav">
-        <div class="top-nav-title">
-            <a href="<?= $this->Url->build('/') ?>"><span>Cake</span>PHP</a>
-        </div>
-        <div class="top-nav-links">
-            <a target="_blank" rel="noopener" href="https://book.cakephp.org/5/">Documentation</a>
-            <a target="_blank" rel="noopener" href="https://api.cakephp.org/">API</a>
-            <?php if ($this->Identity->isLoggedIn()): ?>
-                <a href="<?= $this->Url->build(['controller' => 'Users', 'action' => 'logout']) ?>"><button class="btn btn-danger">Logout</button></a>
-            <?php endif; ?>
-        </div>
-    </nav>
-    <main class="main">
-        <div class="container" ;">
+    <main>
+        <div>
             <?= $this->Flash->render() ?>
             <?= $this->fetch('content') ?>
         </div>
