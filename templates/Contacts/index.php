@@ -10,7 +10,7 @@ $this->layout = 'admin';
     <?= $this->Html->link(__('New Contact'), ['action' => 'add'], ['class' => 'button float-right']) ?>
     <h3><?= __('Contacts') ?></h3>
     <div class="table-responsive">
-        <table>
+        <table id="dataTable" class="table table-bordered" width="100%" cellspacing="0">
             <thead>
                 <tr>
                     <th><?= $this->Paginator->sort('id') ?></th>
