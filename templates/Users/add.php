@@ -6,7 +6,6 @@
  */
 ?>
 <div class="d-flex justify-content-center align-items-center dvh-100">
-
     <div class="container py-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
@@ -14,7 +13,7 @@
                     '<i class="fas fa-home me-2"></i>' . __('Back to Home'),
                     '/',
                     [
-                        'class' => 'btn btn-dark px-4 py-2 my-3',
+                        'class' => 'btn btn-dark px-5 py-3 mb-4 fs-5 fw-semibold',
                         'escape' => false
                     ]
                 ) ?>
@@ -32,7 +31,7 @@
                         <div class="row g-3">
                             <div class="col-md-6">
                                 <?= $this->Form->control('first_name', [
-                                    'class' => 'form-control bold',
+                                    'class' => 'form-control bold fs-5',
                                     'label' => ['class' => 'form-label fw-semibold'],
                                     'placeholder' => 'Enter first name'
                                 ]) ?>
@@ -40,7 +39,7 @@
 
                             <div class="col-md-6">
                                 <?= $this->Form->control('last_name', [
-                                    'class' => 'form-control bold',
+                                    'class' => 'form-control bold fs-5',
                                     'label' => ['class' => 'form-label fw-semibold'],
                                     'placeholder' => 'Enter last name'
                                 ]) ?>
@@ -48,7 +47,7 @@
 
                             <div class="col-12">
                                 <?= $this->Form->control('email', [
-                                    'class' => 'form-control bold',
+                                    'class' => 'form-control bold fs-5',
                                     'label' => ['class' => 'form-label fw-semibold'],
                                     'placeholder' => 'Enter your email address',
                                     'type' => 'email'
@@ -57,7 +56,7 @@
 
                             <div class="col-12">
                                 <?= $this->Form->control('password', [
-                                    'class' => 'form-control bold',
+                                    'class' => 'form-control bold fs-5',
                                     'label' => ['class' => 'form-label fw-semibold'],
                                     'placeholder' => 'Choose a strong password',
                                     'type' => 'password'
@@ -83,7 +82,6 @@
                         <?= $this->Form->end() ?>
                     </div>
                 </div>
-
             </div>
         </div>
     </div>
