@@ -59,6 +59,9 @@
                 </div>
             </li>
 
+            <hr class="sidebar-divider my-0">
+
+
             <!-- Organisations Section -->
             <li class="nav-item">
                 <a class="nav-link" href="<?= $this->Url->build(['controller' => 'Organisations', 'action' => 'index']) ?>">
@@ -85,6 +88,8 @@
                     <?php endif; ?>
                 </div>
             </li>
+            <hr class="sidebar-divider my-0">
+
 
             <!-- Contractors Section -->
             <li class="nav-item">
@@ -112,6 +117,8 @@
                     <?php endif; ?>
                 </div>
             </li>
+            <hr class="sidebar-divider my-0">
+
 
             <!-- Skills Section -->
             <li class="nav-item">
@@ -139,6 +146,8 @@
                     <?php endif; ?>
                 </div>
             </li>
+            <hr class="sidebar-divider my-0">
+
 
 
             <!-- Messages Section -->
