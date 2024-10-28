@@ -59,6 +59,7 @@
                 </a>
             </li>
 
+            <hr class="sidebar-divider my-0">
 
             <!-- Skills Section -->
             <li class="nav-item">
@@ -69,7 +70,6 @@
             </li>
 
 
-            <hr class="sidebar-divider my-0">
 
             <!-- Messages Section -->
             <li class="nav-item">
@@ -79,7 +79,7 @@
                 </a>
             </li>
 
-            <hr class="sidebar-divider mt-auto my-0">
+            <hr class="sidebar-divider my-0">
 
             <!-- Users Section -->
             <li class="nav-item">
