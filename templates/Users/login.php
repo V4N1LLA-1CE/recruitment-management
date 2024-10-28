@@ -13,7 +13,11 @@
                     <p style="color: hsl(217, 10%, 50.8%)">
                         Welcome to Recruitr. We are a business managed by Nathan Jims. We specialise in B2B recruiting and can get things done quickly and efficiently. Feel free to reach out to us <a href="<?= $this->Url->build(['controller' => 'Contacts', 'action' => 'add']) ?>"><span class="contact-anchor">here</span></a>.
                     </p>
+                    <?= $this->Html->link("Contact Us", ['controller' => 'Contacts', 'action' => 'add'], ['class' => 'text-decoration-none text-white bold btn btn-dark px-5 rounded-5']) ?>
+
                 </div>
+
+
 
                 <div class="col-lg-6 mb-5 mb-lg-0">
                     <div class="card p-5">
@@ -48,9 +52,7 @@
                                 </button>
 
                                 <!-- Register link -->
-                                <button type="button" class="btn btn-secondary px-5 rounded-5">
-                                    <?= $this->Html->link("Register", ['action' => 'add'], ['class' => 'text-decoration-none text-white bold']) ?>
-                                </button>
+                                <?= $this->Html->link("Register", ['action' => 'add'], ['class' => 'text-decoration-none text-white bold btn btn-dark px-5 rounded-5']) ?>
                             </div>
                             <?= $this->Form->end() ?>
                         </div>

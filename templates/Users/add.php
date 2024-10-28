@@ -6,9 +6,18 @@
  */
 ?>
 <div class="d-flex justify-content-center align-items-center dvh-100">
+
     <div class="container py-5">
         <div class="row justify-content-center">
             <div class="col-md-6">
+                <?= $this->Html->link(
+                    '<i class="fas fa-home me-2"></i>' . __('Back to Home'),
+                    '/',
+                    [
+                        'class' => 'btn btn-dark px-4 py-2 my-3',
+                        'escape' => false
+                    ]
+                ) ?>
                 <div class="card shadow-sm">
                     <div class="card-header bg-white py-3">
                         <h3 class="card-title text-center text-gray-400 mb-0 fw-bold"><?= __('Create Account') ?></h3>
@@ -61,7 +70,7 @@
 
                         <div class="d-grid gap-2 mt-4">
                             <?= $this->Form->button(__('Create Account'), [
-                                'class' => 'btn btn-dark py-2',
+                                'class' => 'btn btn-dark py-2 bold rounded-5',
                             ]) ?>
                         </div>
 
