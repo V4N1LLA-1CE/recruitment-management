@@ -86,8 +86,19 @@ class ContactsController extends AppController
             }
             $this->Flash->error(__('The contact could not be saved. Please, try again.'));
         }
-        $organisations = $this->Contacts->Organisations->find('list', limit: 200)->all();
-        $contractors = $this->Contacts->Contractors->find('list', limit: 200)->all();
+        $organisations = $this->Contacts->Organisations->find('list', [
+            'keyField' => 'id',
+            'valueField' => 'business_name',
+            'limit' => 200
+        ])->all();
+
+        $contractors = $this->Contacts->Contractors->find('list', [
+            'keyField' => 'id',
+            'valueField' => function ($contractor) {
+                return $contractor->first_name . ' ' . $contractor->last_name;
+            },
+            'limit' => 200
+        ])->all();
         $this->set(compact('contact', 'organisations', 'contractors'));
     }
 

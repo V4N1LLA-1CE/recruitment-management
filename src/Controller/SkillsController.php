@@ -54,8 +54,17 @@ class SkillsController extends AppController
             }
             $this->Flash->error(__('The skill could not be saved. Please, try again.'));
         }
-        $contractors = $this->Skills->Contractors->find('list', limit: 200)->all();
-        $projects = $this->Skills->Projects->find('list', limit: 200)->all();
+        $contractors = $this->Skills->Contractors->find('list', [
+            'keyField' => 'id',
+            'valueField' => function ($contractor) {
+                return $contractor->first_name . ' ' . $contractor->last_name;
+            }
+        ])->all();
+
+        $projects = $this->Skills->Projects->find('list', [
+            'keyField' => 'id',
+            'valueField' => 'project_name'
+        ])->all();
         $this->set(compact('skill', 'contractors', 'projects'));
     }
 
