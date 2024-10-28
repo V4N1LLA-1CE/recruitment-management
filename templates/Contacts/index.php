@@ -7,7 +7,7 @@
 $this->layout = 'admin';
 ?>
 <div class="contacts index content">
-    <h3><?= __('Contacts') ?></h3>
+    <h3><?= __('Messages') ?></h3>
     <div class="my-4">
         <div class="table-responsive">
             <table id="dataTable" class="table table-bordered" width="100%" cellspacing="0">
