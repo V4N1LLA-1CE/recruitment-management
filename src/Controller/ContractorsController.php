@@ -54,7 +54,7 @@ class ContractorsController extends AppController
             }
             $this->Flash->error(__('The contractor could not be saved. Please, try again.'));
         }
-        $skills = $this->Contractors->Skills->find('list', limit: 200)->all();
+        $skills = $this->Contractors->Skills->find('list', ['limit' => 200, 'keyField' => 'id', 'valueField' => 'skill_name'])->all();
         $this->set(compact('contractor', 'skills'));
     }
 
@@ -77,7 +77,8 @@ class ContractorsController extends AppController
             }
             $this->Flash->error(__('The contractor could not be saved. Please, try again.'));
         }
-        $skills = $this->Contractors->Skills->find('list', limit: 200)->all();
+        $skills = $this->Contractors->Skills->find('list', ['keyField' => 'id', 'valueField' => 'skill_name', 'limit' => 200])->all();
+
         $this->set(compact('contractor', 'skills'));
     }
 
