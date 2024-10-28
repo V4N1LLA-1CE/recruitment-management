@@ -1,145 +1,136 @@
 <?php
+
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Contractor $contractor
  */
+$this->setLayout('admin')
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('Edit Contractor'), ['action' => 'edit', $contractor->id], ['class' => 'side-nav-item']) ?>
-            <?= $this->Form->postLink(__('Delete Contractor'), ['action' => 'delete', $contractor->id], ['confirm' => __('Are you sure you want to delete # {0}?', $contractor->id), 'class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('List Contractors'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('New Contractor'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
+<div class="container py-4">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex justify-content-between align-items-center">
+            <h3 class="m-0 font-weight-bold text-primary"><?= h($contractor->first_name . ' ' . $contractor->last_name) ?></h3>
+            <div>
+                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $contractor->id], ['class' => 'btn btn-warning btn-sm me-2 px-4']) ?>
+                <?= $this->Form->postLink(
+                    __('Delete'),
+                    ['action' => 'delete', $contractor->id],
+                    ['confirm' => __('Are you sure you want to delete this contractor?'), 'class' => 'btn btn-danger btn-sm px-3']
+                ) ?>
+            </div>
         </div>
-    </aside>
-    <div class="column column-80">
-        <div class="contractors view content">
-            <h3><?= h($contractor->id) ?></h3>
-            <table>
-                <tr>
-                    <th><?= __('First Name') ?></th>
-                    <td><?= h($contractor->first_name) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Last Name') ?></th>
-                    <td><?= h($contractor->last_name) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Phone Number') ?></th>
-                    <td><?= h($contractor->phone_number) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Contractor Email') ?></th>
-                    <td><?= h($contractor->contractor_email) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Id') ?></th>
-                    <td><?= $this->Number->format($contractor->id) ?></td>
-                </tr>
-            </table>
-            <div class="related">
-                <h4><?= __('Related Skills') ?></h4>
-                <?php if (!empty($contractor->skills)) : ?>
-                <div class="table-responsive">
-                    <table>
+        <div class="card-body">
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <table class="table">
                         <tr>
-                            <th><?= __('Id') ?></th>
-                            <th><?= __('Skill Name') ?></th>
-                            <th class="actions"><?= __('Actions') ?></th>
+                            <th class="w-50"><?= __('First Name') ?></th>
+                            <td><?= h($contractor->first_name) ?></td>
                         </tr>
-                        <?php foreach ($contractor->skills as $skill) : ?>
                         <tr>
-                            <td><?= h($skill->id) ?></td>
-                            <td><?= h($skill->skill_name) ?></td>
-                            <td class="actions">
-                                <?= $this->Html->link(__('View'), ['controller' => 'Skills', 'action' => 'view', $skill->id]) ?>
-                                <?= $this->Html->link(__('Edit'), ['controller' => 'Skills', 'action' => 'edit', $skill->id]) ?>
-                                <?= $this->Form->postLink(__('Delete'), ['controller' => 'Skills', 'action' => 'delete', $skill->id], ['confirm' => __('Are you sure you want to delete # {0}?', $skill->id)]) ?>
-                            </td>
-                        </tr>
-                        <?php endforeach; ?>
-                    </table>
-                </div>
-                <?php endif; ?>
-            </div>
-            <div class="related">
-                <h4><?= __('Related Contacts') ?></h4>
-                <?php if (!empty($contractor->contacts)) : ?>
-                <div class="table-responsive">
-                    <table>
-                        <tr>
-                            <th><?= __('Id') ?></th>
-                            <th><?= __('First Name') ?></th>
                             <th><?= __('Last Name') ?></th>
-                            <th><?= __('Email') ?></th>
+                            <td><?= h($contractor->last_name) ?></td>
+                        </tr>
+                        <tr>
                             <th><?= __('Phone Number') ?></th>
-                            <th><?= __('Message') ?></th>
-                            <th><?= __('Organisation Id') ?></th>
-                            <th><?= __('Contractor Id') ?></th>
-                            <th class="actions"><?= __('Actions') ?></th>
+                            <td><?= h($contractor->phone_number) ?></td>
                         </tr>
-                        <?php foreach ($contractor->contacts as $contact) : ?>
                         <tr>
-                            <td><?= h($contact->id) ?></td>
-                            <td><?= h($contact->first_name) ?></td>
-                            <td><?= h($contact->last_name) ?></td>
-                            <td><?= h($contact->email) ?></td>
-                            <td><?= h($contact->phone_number) ?></td>
-                            <td><?= h($contact->message) ?></td>
-                            <td><?= h($contact->organisation_id) ?></td>
-                            <td><?= h($contact->contractor_id) ?></td>
-                            <td class="actions">
-                                <?= $this->Html->link(__('View'), ['controller' => 'Contacts', 'action' => 'view', $contact->id]) ?>
-                                <?= $this->Html->link(__('Edit'), ['controller' => 'Contacts', 'action' => 'edit', $contact->id]) ?>
-                                <?= $this->Form->postLink(__('Delete'), ['controller' => 'Contacts', 'action' => 'delete', $contact->id], ['confirm' => __('Are you sure you want to delete # {0}?', $contact->id)]) ?>
-                            </td>
+                            <th><?= __('Email') ?></th>
+                            <td><?= h($contractor->contractor_email) ?></td>
                         </tr>
-                        <?php endforeach; ?>
                     </table>
                 </div>
-                <?php endif; ?>
             </div>
-            <div class="related">
-                <h4><?= __('Related Projects') ?></h4>
-                <?php if (!empty($contractor->projects)) : ?>
-                <div class="table-responsive">
-                    <table>
-                        <tr>
-                            <th><?= __('Id') ?></th>
-                            <th><?= __('Project Name') ?></th>
-                            <th><?= __('Description') ?></th>
-                            <th><?= __('Management Tool Link') ?></th>
-                            <th><?= __('Project Due Date') ?></th>
-                            <th><?= __('Last Checked') ?></th>
-                            <th><?= __('Complete') ?></th>
-                            <th><?= __('Contractor Id') ?></th>
-                            <th><?= __('Organisation Id') ?></th>
-                            <th class="actions"><?= __('Actions') ?></th>
-                        </tr>
-                        <?php foreach ($contractor->projects as $project) : ?>
-                        <tr>
-                            <td><?= h($project->id) ?></td>
-                            <td><?= h($project->project_name) ?></td>
-                            <td><?= h($project->description) ?></td>
-                            <td><?= h($project->management_tool_link) ?></td>
-                            <td><?= h($project->project_due_date) ?></td>
-                            <td><?= h($project->last_checked) ?></td>
-                            <td><?= h($project->complete) ?></td>
-                            <td><?= h($project->contractor_id) ?></td>
-                            <td><?= h($project->organisation_id) ?></td>
-                            <td class="actions">
-                                <?= $this->Html->link(__('View'), ['controller' => 'Projects', 'action' => 'view', $project->id]) ?>
-                                <?= $this->Html->link(__('Edit'), ['controller' => 'Projects', 'action' => 'edit', $project->id]) ?>
-                                <?= $this->Form->postLink(__('Delete'), ['controller' => 'Projects', 'action' => 'delete', $project->id], ['confirm' => __('Are you sure you want to delete # {0}?', $project->id)]) ?>
-                            </td>
-                        </tr>
-                        <?php endforeach; ?>
-                    </table>
+
+            <?php if (!empty($contractor->skills)): ?>
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0"><?= __('Skills') ?></h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="d-flex flex-wrap gap-2">
+                            <?php foreach ($contractor->skills as $skill): ?>
+                                <span class="badge bg-primary text-white"><?= h($skill->skill_name) ?></span>
+                            <?php endforeach; ?>
+                        </div>
+                    </div>
                 </div>
-                <?php endif; ?>
-            </div>
+            <?php endif; ?>
+
+            <?php if (!empty($contractor->projects)): ?>
+                <div class="card mb-4">
+                    <div class="card-header">
+                        <h5 class="mb-0"><?= __('Related Projects') ?></h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th><?= __('Project Name') ?></th>
+                                        <th><?= __('Due Date') ?></th>
+                                        <th><?= __('Status') ?></th>
+                                        <th class="actions"><?= __('Actions') ?></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($contractor->projects as $project): ?>
+                                        <tr>
+                                            <td><?= h($project->project_name) ?></td>
+                                            <td><?= $project->project_due_date ? h($project->project_due_date->format('Y-m-d')) : '-' ?></td>
+                                            <td>
+                                                <?php if ($project->complete): ?>
+                                                    <span class="badge bg-success">Completed</span>
+                                                <?php else: ?>
+                                                    <span class="badge bg-warning text-dark">In Progress</span>
+                                                <?php endif; ?>
+                                            </td>
+                                            <td class="actions">
+                                                <?= $this->Html->link(__('View'), ['controller' => 'Projects', 'action' => 'view', $project->id], ['class' => 'btn btn-sm btn-primary px-3']) ?>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
+
+            <?php if (!empty($contractor->contacts)): ?>
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0"><?= __('Related Contacts') ?></h5>
+                    </div>
+                    <div class="card-body">
+                        <div class="table-responsive">
+                            <table class="table table-hover">
+                                <thead>
+                                    <tr>
+                                        <th><?= __('Name') ?></th>
+                                        <th><?= __('Email') ?></th>
+                                        <th><?= __('Phone Number') ?></th>
+                                        <th class="actions"><?= __('Actions') ?></th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($contractor->contacts as $contact): ?>
+                                        <tr>
+                                            <td><?= h($contact->first_name . ' ' . $contact->last_name) ?></td>
+                                            <td><?= h($contact->email) ?></td>
+                                            <td><?= h($contact->phone_number) ?></td>
+                                            <td class="actions">
+                                                <?= $this->Html->link(__('View'), ['controller' => 'Contacts', 'action' => 'view', $contact->id], ['class' => 'btn btn-sm btn-primary']) ?>
+                                            </td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 </div>
