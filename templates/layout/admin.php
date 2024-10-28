@@ -31,6 +31,7 @@
                 <div class="sidebar-brand-text mx-3">Admin Panel</div>
             </a>
             <hr class="sidebar-divider my-0">
+
             <!-- Projects Section -->
             <li class="nav-item">
                 <a class="nav-link" href="<?= $this->Url->build('/') ?>">
@@ -111,6 +112,34 @@
                     <?php endif; ?>
                 </div>
             </li>
+
+            <!-- Skills Section -->
+            <li class="nav-item">
+                <a class="nav-link" href="<?= $this->Url->build(['controller' => 'Skills', 'action' => 'index']) ?>">
+                    <i class="fa-solid fa-rocket"></i>
+                    <span>Skills</span>
+                </a>
+                <div class="sidebar-actions">
+                    <?= $this->Html->link(
+                        '<i class="fas fa-plus fa-sm"></i> Add New',
+                        ['controller' => 'Skills', 'action' => 'add'],
+                        ['escape' => false]
+                    ) ?>
+                    <?php if (isset($skill) && !empty($skill->id)): ?>
+                        <?= $this->Html->link(
+                            '<i class="fas fa-eye fa-sm"></i> View',
+                            ['controller' => 'Skills', 'action' => 'view', $skill->id],
+                            ['escape' => false]
+                        ) ?>
+                        <?= $this->Html->link(
+                            '<i class="fas fa-edit fa-sm"></i> Edit',
+                            ['controller' => 'Skills', 'action' => 'edit', $skill->id],
+                            ['escape' => false]
+                        ) ?>
+                    <?php endif; ?>
+                </div>
+            </li>
+
 
             <!-- Messages Section -->
             <li class="nav-item">
