@@ -103,13 +103,17 @@ $this->setLayout('admin')
                         </div>
                     </div>
 
-                    <div class="pt-4">
-                        <?= $this->Html->link(__('Cancel'), ['action' => 'index'], [
-                            'class' => 'btn btn-outline-secondary me-2'
-                        ]) ?>
-                        <?= $this->Form->button(__('Create Project'), [
-                            'class' => 'btn btn-primary px-4',
-                        ]) ?>
+                    <div class="pt-4 d-flex">
+                        <div>
+                            <?= $this->Html->link(__('Cancel'), ['action' => 'index'], [
+                                'class' => 'btn btn-outline-secondary me-2'
+                            ]) ?>
+                        </div>
+                        <div class="mx-3">
+                            <?= $this->Form->button(__('Create Project'), [
+                                'class' => 'btn btn-primary px-4',
+                            ]) ?>
+                        </div>
                     </div>
                     <?= $this->Form->end() ?>
                 </div>

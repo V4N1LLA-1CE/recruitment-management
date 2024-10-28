@@ -81,7 +81,7 @@ $this->setLayout('admin')
                                             <td><?= $project->project_due_date ? h($project->project_due_date->format('Y-m-d')) : '-' ?></td>
                                             <td>
                                                 <?php if ($project->complete): ?>
-                                                    <span class="badge bg-success">Completed</span>
+                                                    <span class="badge bg-success text-white">Completed</span>
                                                 <?php else: ?>
                                                     <span class="badge bg-warning text-dark">In Progress</span>
                                                 <?php endif; ?>
