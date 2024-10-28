@@ -18,8 +18,8 @@ class UsersController extends AppController
      */
     public function index()
     {
-        $query = $this->Users->find();
-        $users = $this->paginate($query);
+        $users = $this->Users->find()
+            ->all();  // Get all users without pagination
 
         $this->set(compact('users'));
     }

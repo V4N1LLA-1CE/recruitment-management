@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller;
@@ -17,8 +18,8 @@ class ContractorsController extends AppController
      */
     public function index()
     {
-        $query = $this->Contractors->find();
-        $contractors = $this->paginate($query);
+        $contractors = $this->Contractors->find()
+            ->all();
 
         $this->set(compact('contractors'));
     }

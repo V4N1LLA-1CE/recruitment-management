@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller;
@@ -17,8 +18,8 @@ class SkillsController extends AppController
      */
     public function index()
     {
-        $query = $this->Skills->find();
-        $skills = $this->paginate($query);
+        $skills = $this->Skills->find()
+            ->all();  // Get all skills without pagination
 
         $this->set(compact('skills'));
     }

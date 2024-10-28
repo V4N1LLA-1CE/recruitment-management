@@ -18,9 +18,9 @@ class ProjectsController extends AppController
      */
     public function index()
     {
-        $query = $this->Projects->find()
-            ->contain(['Contractors', 'Organisations']);
-        $projects = $this->paginate($query);
+        $projects = $this->Projects->find()
+            ->contain(['Contractors', 'Organisations'])
+            ->all();  // Get all projects without pagination
 
         $this->set(compact('projects'));
     }

@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller;
@@ -17,8 +18,8 @@ class OrganisationsController extends AppController
      */
     public function index()
     {
-        $query = $this->Organisations->find();
-        $organisations = $this->paginate($query);
+        $organisations = $this->Organisations->find()
+            ->all();
 
         $this->set(compact('organisations'));
     }

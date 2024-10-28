@@ -25,9 +25,9 @@ class ContactsController extends AppController
      */
     public function index()
     {
-        $query = $this->Contacts->find()
-            ->contain(['Organisations', 'Contractors']);
-        $contacts = $this->paginate($query);
+        $contacts = $this->Contacts->find()
+            ->contain(['Organisations', 'Contractors'])
+            ->all();  // Get all contacts without pagination
 
         $this->set(compact('contacts'));
     }
