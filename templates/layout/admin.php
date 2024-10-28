@@ -4,7 +4,7 @@
 <head>
     <?= $this->Html->charset() ?>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title><?= $cakeDescription ?>: <?= $this->fetch('title') ?></title>
+    <title>Admin Panel</title>
 
     <!-- CSS -->
     <link href="https://cdnjs.cloudflare.com/ajax/libs/startbootstrap-sb-admin-2/4.1.4/css/sb-admin-2.min.css" rel="stylesheet">
