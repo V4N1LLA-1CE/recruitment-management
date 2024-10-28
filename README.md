@@ -29,6 +29,11 @@ config/schema/db.sql
 2. Login with email and password that was registered # NOTE: registration screen is public for demo purposes
 ```
 
+## Public Endpoints
+
+`/contact-us` - public page for contacting our business
+I've left this here since "/" points to projects/index.php but because user isn't initially signed in, it will redirect to login page.
+
 ### Technology Stack
 
 -   Framework: CakePHP 5.x
