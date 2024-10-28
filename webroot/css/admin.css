@@ -1,0 +1,28 @@
+.sidebar .nav-item .nav-link {
+    padding: 0.75rem 1rem;
+}
+
+.sidebar .nav-item .nav-link i {
+    width: 1.25rem;
+    margin-right: 0.5rem;
+}
+
+.sidebar-actions {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+}
+
+.sidebar-actions a {
+    color: rgba(255, 255, 255, 0.8);
+    padding: 0.25rem 1rem 0.25rem 2.75rem;
+    display: block;
+}
+
+.sidebar-actions a:hover {
+    color: #fff;
+    text-decoration: none;
+}
+
+.topbar {
+    height: 4rem;
+}
