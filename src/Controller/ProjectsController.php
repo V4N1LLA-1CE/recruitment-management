@@ -1,4 +1,5 @@
 <?php
+
 declare(strict_types=1);
 
 namespace App\Controller;
@@ -54,9 +55,26 @@ class ProjectsController extends AppController
             }
             $this->Flash->error(__('The project could not be saved. Please, try again.'));
         }
-        $contractors = $this->Projects->Contractors->find('list', limit: 200)->all();
-        $organisations = $this->Projects->Organisations->find('list', limit: 200)->all();
-        $skills = $this->Projects->Skills->find('list', limit: 200)->all();
+
+        $contractors = $this->Projects->Contractors->find('list', [
+            'keyField' => 'id',
+            'valueField' => function ($contractor) {
+                return $contractor->first_name . ' ' . $contractor->last_name;
+            },
+            'limit' => 200
+        ])->all();
+
+        $organisations = $this->Projects->Organisations->find('list', [
+            'keyField' => 'id',
+            'valueField' => 'business_name',
+            'limit' => 200
+        ])->all();
+
+        $skills = $this->Projects->Skills->find('list', [
+            'keyField' => 'id',
+            'valueField' => 'skill_name',
+            'limit' => 200
+        ])->all();
         $this->set(compact('project', 'contractors', 'organisations', 'skills'));
     }
 
