@@ -38,28 +38,8 @@
                     <i class="fa-solid fa-diagram-project"></i>
                     <span>Projects</span>
                 </a>
-                <div class="sidebar-actions">
-                    <?= $this->Html->link(
-                        '<i class="fas fa-plus fa-sm"></i> Add New',
-                        ['controller' => 'Projects', 'action' => 'add'],
-                        ['escape' => false]
-                    ) ?>
-                    <?php if (isset($project) && !empty($project->id)): ?>
-                        <?= $this->Html->link(
-                            '<i class="fas fa-eye fa-sm"></i> View',
-                            ['controller' => 'Projects', 'action' => 'view', $project->id],
-                            ['escape' => false]
-                        ) ?>
-                        <?= $this->Html->link(
-                            '<i class="fas fa-edit fa-sm"></i> Edit',
-                            ['controller' => 'Projects', 'action' => 'edit', $project->id],
-                            ['escape' => false]
-                        ) ?>
-                    <?php endif; ?>
-                </div>
             </li>
 
-            <hr class="sidebar-divider my-0">
 
 
             <!-- Organisations Section -->
@@ -68,27 +48,7 @@
                     <i class="fa-solid fa-building"></i>
                     <span>Organisations</span>
                 </a>
-                <div class="sidebar-actions">
-                    <?= $this->Html->link(
-                        '<i class="fas fa-plus fa-sm"></i> Add New',
-                        ['controller' => 'Organisations', 'action' => 'add'],
-                        ['escape' => false]
-                    ) ?>
-                    <?php if (isset($organisation) && !empty($organisation->id)): ?>
-                        <?= $this->Html->link(
-                            '<i class="fas fa-eye fa-sm"></i> View',
-                            ['controller' => 'Organisations', 'action' => 'view', $organisation->id],
-                            ['escape' => false]
-                        ) ?>
-                        <?= $this->Html->link(
-                            '<i class="fas fa-edit fa-sm"></i> Edit',
-                            ['controller' => 'Organisations', 'action' => 'edit', $organisation->id],
-                            ['escape' => false]
-                        ) ?>
-                    <?php endif; ?>
-                </div>
             </li>
-            <hr class="sidebar-divider my-0">
 
 
             <!-- Contractors Section -->
@@ -97,27 +57,7 @@
                     <i class="fa-solid fa-users"></i>
                     <span>Contractors</span>
                 </a>
-                <div class="sidebar-actions">
-                    <?= $this->Html->link(
-                        '<i class="fas fa-plus fa-sm"></i> Add New',
-                        ['controller' => 'Contractors', 'action' => 'add'],
-                        ['escape' => false]
-                    ) ?>
-                    <?php if (isset($contractor) && !empty($contractor->id)): ?>
-                        <?= $this->Html->link(
-                            '<i class="fas fa-eye fa-sm"></i> View',
-                            ['controller' => 'Contractors', 'action' => 'view', $contractor->id],
-                            ['escape' => false]
-                        ) ?>
-                        <?= $this->Html->link(
-                            '<i class="fas fa-edit fa-sm"></i> Edit',
-                            ['controller' => 'Contractors', 'action' => 'edit', $contractor->id],
-                            ['escape' => false]
-                        ) ?>
-                    <?php endif; ?>
-                </div>
             </li>
-            <hr class="sidebar-divider my-0">
 
 
             <!-- Skills Section -->
@@ -126,29 +66,10 @@
                     <i class="fa-solid fa-rocket"></i>
                     <span>Skills</span>
                 </a>
-                <div class="sidebar-actions">
-                    <?= $this->Html->link(
-                        '<i class="fas fa-plus fa-sm"></i> Add New',
-                        ['controller' => 'Skills', 'action' => 'add'],
-                        ['escape' => false]
-                    ) ?>
-                    <?php if (isset($skill) && !empty($skill->id)): ?>
-                        <?= $this->Html->link(
-                            '<i class="fas fa-eye fa-sm"></i> View',
-                            ['controller' => 'Skills', 'action' => 'view', $skill->id],
-                            ['escape' => false]
-                        ) ?>
-                        <?= $this->Html->link(
-                            '<i class="fas fa-edit fa-sm"></i> Edit',
-                            ['controller' => 'Skills', 'action' => 'edit', $skill->id],
-                            ['escape' => false]
-                        ) ?>
-                    <?php endif; ?>
-                </div>
             </li>
+
+
             <hr class="sidebar-divider my-0">
-
-
 
             <!-- Messages Section -->
             <li class="nav-item">
@@ -156,15 +77,6 @@
                     <i class="fa-solid fa-envelope"></i>
                     <span>Messages</span>
                 </a>
-                <div class="sidebar-actions">
-                    <?php if (isset($contact) && !empty($contact->id)): ?>
-                        <?= $this->Html->link(
-                            '<i class="fas fa-eye fa-sm"></i> View',
-                            ['controller' => 'Contacts', 'action' => 'view', $contact->id],
-                            ['escape' => false]
-                        ) ?>
-                    <?php endif; ?>
-                </div>
             </li>
 
             <hr class="sidebar-divider mt-auto my-0">
