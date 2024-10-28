@@ -48,7 +48,7 @@ $this->setLayout('admin')
                             <?= $this->Form->control('project_due_date', [
                                 'class' => 'form-control',
                                 'label' => ['class' => 'form-label fw-semibold'],
-                                'type' => 'date'
+                                'type' => 'datetime'
                             ]) ?>
                         </div>
 
@@ -56,7 +56,7 @@ $this->setLayout('admin')
                             <?= $this->Form->control('last_checked', [
                                 'class' => 'form-control',
                                 'label' => ['class' => 'form-label fw-semibold'],
-                                'type' => 'date'
+                                'type' => 'datetime'
                             ]) ?>
                         </div>
 

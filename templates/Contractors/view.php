@@ -11,7 +11,7 @@ $this->setLayout('admin')
         <div class="card-header py-3 d-flex justify-content-between align-items-center">
             <h3 class="m-0 font-weight-bold text-primary"><?= h($contractor->first_name . ' ' . $contractor->last_name) ?></h3>
             <div>
-                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $contractor->id], ['class' => 'btn btn-warning btn-sm me-2 px-4']) ?>
+                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $contractor->id], ['class' => 'btn btn-secondary btn-sm me-2 px-4']) ?>
                 <?= $this->Form->postLink(
                     __('Delete'),
                     ['action' => 'delete', $contractor->id],
