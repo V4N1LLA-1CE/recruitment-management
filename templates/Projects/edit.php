@@ -90,7 +90,7 @@ $this->setLayout('admin')
                         'class' => 'form-control',
                         'label' => ['class' => 'form-label fw-bold'],
                         'multiple' => true,
-                        'size' => 5
+                        'size' => 10
                     ]) ?>
                 </div>
             </div>

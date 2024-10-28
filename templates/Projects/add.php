@@ -98,6 +98,7 @@ $this->setLayout('admin')
                                 'class' => 'form-control',
                                 'label' => ['class' => 'form-label fw-semibold'],
                                 'multiple' => 'multiple',
+                                'size' => 10,
                                 'data-placeholder' => 'Select required skills'
                             ]) ?>
                         </div>

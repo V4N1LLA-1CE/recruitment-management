@@ -55,6 +55,7 @@ $this->setLayout('admin')
                                 'class' => 'form-control',
                                 'label' => ['class' => 'form-label fw-semibold'],
                                 'multiple' => true,
+                                'size' => 10,  // Shows 10 options at once
                                 'data-placeholder' => 'Select contractor skills'
                             ]) ?>
                         </div>

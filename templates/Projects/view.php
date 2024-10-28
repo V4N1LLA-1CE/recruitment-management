@@ -84,7 +84,7 @@ $this->setLayout('admin')
                     <div class="card-body">
                         <div class="d-flex flex-wrap gap-2">
                             <?php foreach ($project->skills as $skill): ?>
-                                <span class="badge bg-primary"><?= h($skill->skill_name) ?></span>
+                                <span class="badge bg-info mx-1 text-white"><?= h($skill->skill_name) ?></span>
                             <?php endforeach; ?>
                         </div>
                     </div>
