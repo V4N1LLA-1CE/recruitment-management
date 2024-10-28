@@ -37,9 +37,34 @@ $this->layout = 'admin';
                             <td><?= $project->hasValue('contractor') ? $this->Html->link(($project->contractor->first_name . " " . $project->contractor->last_name), ['controller' => 'Contractors', 'action' => 'view', $project->contractor->id]) : '' ?></td>
                             <td><?= $project->hasValue('organisation') ? $this->Html->link($project->organisation->business_name, ['controller' => 'Organisations', 'action' => 'view', $project->organisation->id]) : '' ?></td>
                             <td class="actions">
-                                <?= $this->Html->link(__('View'), ['action' => 'view', $project->id]) ?>
-                                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $project->id]) ?>
-                                <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $project->id], ['confirm' => __('Are you sure you want to delete # {0}?', $project->id)]) ?>
+                                <?= $this->Html->link(
+                                    '<i class="fas fa-eye " style="font-size: 1.2rem;"></i>',
+                                    ['action' => 'view', $project->id],
+                                    [
+                                        'escape' => false,
+                                        'class' => 'text-primary me-3',
+                                        'title' => 'View'
+                                    ]
+                                ) ?>
+                                <?= $this->Html->link(
+                                    '<i class="fas fa-edit " style="font-size: 1.2rem;"></i>',
+                                    ['action' => 'edit', $project->id],
+                                    [
+                                        'escape' => false,
+                                        'class' => 'text-secondary me-3',
+                                        'title' => 'Edit'
+                                    ]
+                                ) ?>
+                                <?= $this->Form->postLink(
+                                    '<i class="fas fa-trash" style="font-size: 1.2rem;"></i>',
+                                    ['action' => 'delete', $project->id],
+                                    [
+                                        'confirm' => __('Are you sure you want to delete # {0}?', $project->id),
+                                        'escape' => false,
+                                        'class' => 'text-danger',
+                                        'title' => 'Delete'
+                                    ]
+                                ) ?>
                             </td>
                         </tr>
                     <?php endforeach; ?>

@@ -31,9 +31,34 @@ $this->layout = 'admin';
                             <td><?= h($contractor->phone_number) ?></td>
                             <td><?= h($contractor->contractor_email) ?></td>
                             <td class="actions">
-                                <?= $this->Html->link(__('View'), ['action' => 'view', $contractor->id]) ?>
-                                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $contractor->id]) ?>
-                                <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $contractor->id], ['confirm' => __('Are you sure you want to delete # {0}?', $contractor->id)]) ?>
+                                <?= $this->Html->link(
+                                    '<i class="fas fa-eye" style="font-size: 1.2rem;"></i>',
+                                    ['action' => 'view', $contractor->id],
+                                    [
+                                        'escape' => false,
+                                        'class' => 'text-primary me-3',
+                                        'title' => 'View'
+                                    ]
+                                ) ?>
+                                <?= $this->Html->link(
+                                    '<i class="fas fa-edit" style="font-size: 1.2rem;"></i>',
+                                    ['action' => 'edit', $contractor->id],
+                                    [
+                                        'escape' => false,
+                                        'class' => 'text-secondary me-3',
+                                        'title' => 'Edit'
+                                    ]
+                                ) ?>
+                                <?= $this->Form->postLink(
+                                    '<i class="fas fa-trash" style="font-size: 1.2rem;"></i>',
+                                    ['action' => 'delete', $contractor->id],
+                                    [
+                                        'confirm' => __('Are you sure you want to delete # {0}?', $contractor->id),
+                                        'escape' => false,
+                                        'class' => 'text-danger',
+                                        'title' => 'Delete'
+                                    ]
+                                ) ?>
                             </td>
                         </tr>
                     <?php endforeach; ?>

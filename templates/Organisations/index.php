@@ -33,9 +33,34 @@ $this->layout = 'admin';
                             <td><?= h($organisation->contact_email) ?></td>
                             <td><?= h($organisation->current_website) ?></td>
                             <td class="actions">
-                                <?= $this->Html->link(__('View'), ['action' => 'view', $organisation->id]) ?>
-                                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $organisation->id]) ?>
-                                <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $organisation->id], ['confirm' => __('Are you sure you want to delete # {0}?', $organisation->id)]) ?>
+                                <?= $this->Html->link(
+                                    '<i class="fas fa-eye" style="font-size: 1.2rem;"></i>',
+                                    ['action' => 'view', $organisation->id],
+                                    [
+                                        'escape' => false,
+                                        'class' => 'text-primary me-3',
+                                        'title' => 'View'
+                                    ]
+                                ) ?>
+                                <?= $this->Html->link(
+                                    '<i class="fas fa-edit" style="font-size: 1.2rem;"></i>',
+                                    ['action' => 'edit', $organisation->id],
+                                    [
+                                        'escape' => false,
+                                        'class' => 'text-secondary me-3',
+                                        'title' => 'Edit'
+                                    ]
+                                ) ?>
+                                <?= $this->Form->postLink(
+                                    '<i class="fas fa-trash" style="font-size: 1.2rem;"></i>',
+                                    ['action' => 'delete', $organisation->id],
+                                    [
+                                        'confirm' => __('Are you sure you want to delete # {0}?', $organisation->id),
+                                        'escape' => false,
+                                        'class' => 'text-danger',
+                                        'title' => 'Delete'
+                                    ]
+                                ) ?>
                             </td>
                         </tr>
                     <?php endforeach; ?>
