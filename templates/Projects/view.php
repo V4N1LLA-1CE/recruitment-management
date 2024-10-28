@@ -65,31 +65,41 @@ $this->setLayout('admin')
                 </div>
             </div>
 
-            <?php if ($project->description): ?>
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <h5 class="mb-0"><?= __('Description') ?></h5>
-                    </div>
-                    <div class="card-body">
-                        <?= $this->Text->autoParagraph(h($project->description)); ?>
-                    </div>
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0"><?= __('Description') ?></h5>
                 </div>
-            <?php endif; ?>
+                <div class="card-body">
+                    <?php if ($project->description): ?>
+                        <?= $this->Text->autoParagraph(h($project->description)); ?>
+                    <?php else: ?>
+                        <div class="alert alert-info mb-0">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <?= __('No description has been provided for this project') ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            </div>
 
-            <?php if (!empty($project->skills)): ?>
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="mb-0"><?= __('Required Skills') ?></h5>
-                    </div>
-                    <div class="card-body">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0"><?= __('Required Skills') ?></h5>
+                </div>
+                <div class="card-body">
+                    <?php if (!empty($project->skills)): ?>
                         <div class="d-flex flex-wrap gap-2">
                             <?php foreach ($project->skills as $skill): ?>
                                 <span class="badge bg-info mx-1 text-white"><?= h($skill->skill_name) ?></span>
                             <?php endforeach; ?>
                         </div>
-                    </div>
+                    <?php else: ?>
+                        <div class="alert alert-info mb-0">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <?= __('No skills have been specified for this project') ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
-            <?php endif; ?>
+            </div>
         </div>
     </div>
 </div>

@@ -1,40 +1,43 @@
 <?php
+
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\User $user
  */
+$this->setLayout('admin')
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('Edit User'), ['action' => 'edit', $user->id], ['class' => 'side-nav-item']) ?>
-            <?= $this->Form->postLink(__('Delete User'), ['action' => 'delete', $user->id], ['confirm' => __('Are you sure you want to delete # {0}?', $user->id), 'class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('List Users'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('New User'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
+<div class="container py-4">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex justify-content-between align-items-center">
+            <h3 class="m-0 font-weight-bold text-primary"><?= h($user->first_name . ' ' . $user->last_name) ?></h3>
+            <div>
+                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $user->id], ['class' => 'btn btn-secondary btn-sm me-2 px-4']) ?>
+                <?= $this->Form->postLink(
+                    __('Delete'),
+                    ['action' => 'delete', $user->id],
+                    ['confirm' => __('Are you sure you want to delete this user?'), 'class' => 'btn btn-danger btn-sm px-3']
+                ) ?>
+            </div>
         </div>
-    </aside>
-    <div class="column column-80">
-        <div class="users view content">
-            <h3><?= h($user->id) ?></h3>
-            <table>
-                <tr>
-                    <th><?= __('First Name') ?></th>
-                    <td><?= h($user->first_name) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Last Name') ?></th>
-                    <td><?= h($user->last_name) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Email') ?></th>
-                    <td><?= h($user->email) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Id') ?></th>
-                    <td><?= $this->Number->format($user->id) ?></td>
-                </tr>
-            </table>
+        <div class="card-body">
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <table class="table">
+                        <tr>
+                            <th class="w-50"><?= __('First Name') ?></th>
+                            <td><?= h($user->first_name) ?></td>
+                        </tr>
+                        <tr>
+                            <th><?= __('Last Name') ?></th>
+                            <td><?= h($user->last_name) ?></td>
+                        </tr>
+                        <tr>
+                            <th><?= __('Email') ?></th>
+                            <td><?= h($user->email) ?></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
         </div>
     </div>
 </div>

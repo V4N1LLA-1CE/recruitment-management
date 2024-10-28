@@ -1,58 +1,90 @@
 <?php
+
 /**
  * @var \App\View\AppView $this
  * @var \App\Model\Entity\Contact $contact
  */
+$this->setLayout('admin')
 ?>
-<div class="row">
-    <aside class="column">
-        <div class="side-nav">
-            <h4 class="heading"><?= __('Actions') ?></h4>
-            <?= $this->Html->link(__('Edit Contact'), ['action' => 'edit', $contact->id], ['class' => 'side-nav-item']) ?>
-            <?= $this->Form->postLink(__('Delete Contact'), ['action' => 'delete', $contact->id], ['confirm' => __('Are you sure you want to delete # {0}?', $contact->id), 'class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('List Contacts'), ['action' => 'index'], ['class' => 'side-nav-item']) ?>
-            <?= $this->Html->link(__('New Contact'), ['action' => 'add'], ['class' => 'side-nav-item']) ?>
-        </div>
-    </aside>
-    <div class="column column-80">
-        <div class="contacts view content">
-            <h3><?= h($contact->id) ?></h3>
-            <table>
-                <tr>
-                    <th><?= __('First Name') ?></th>
-                    <td><?= h($contact->first_name) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Last Name') ?></th>
-                    <td><?= h($contact->last_name) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Email') ?></th>
-                    <td><?= h($contact->email) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Phone Number') ?></th>
-                    <td><?= h($contact->phone_number) ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Organisation') ?></th>
-                    <td><?= $contact->hasValue('organisation') ? $this->Html->link($contact->organisation->id, ['controller' => 'Organisations', 'action' => 'view', $contact->organisation->id]) : '' ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Contractor') ?></th>
-                    <td><?= $contact->hasValue('contractor') ? $this->Html->link($contact->contractor->id, ['controller' => 'Contractors', 'action' => 'view', $contact->contractor->id]) : '' ?></td>
-                </tr>
-                <tr>
-                    <th><?= __('Id') ?></th>
-                    <td><?= $this->Number->format($contact->id) ?></td>
-                </tr>
-            </table>
-            <div class="text">
-                <strong><?= __('Message') ?></strong>
-                <blockquote>
-                    <?= $this->Text->autoParagraph(h($contact->message)); ?>
-                </blockquote>
+<div class="container py-4">
+    <div class="card shadow mb-4">
+        <div class="card-header py-3 d-flex justify-content-between align-items-center">
+            <h3 class="m-0 font-weight-bold text-primary"><?= h($contact->first_name . ' ' . $contact->last_name) ?></h3>
+            <div>
+                <?= $this->Html->link(__('Edit'), ['action' => 'edit', $contact->id], ['class' => 'btn btn-secondary btn-sm me-2 px-4']) ?>
+                <?= $this->Form->postLink(
+                    __('Delete'),
+                    ['action' => 'delete', $contact->id],
+                    ['confirm' => __('Are you sure you want to delete this contact?'), 'class' => 'btn btn-danger btn-sm px-3']
+                ) ?>
             </div>
+        </div>
+        <div class="card-body">
+            <div class="row mb-4">
+                <div class="col-md-6">
+                    <table class="table">
+                        <tr>
+                            <th class="w-50"><?= __('First Name') ?></th>
+                            <td><?= h($contact->first_name) ?></td>
+                        </tr>
+                        <tr>
+                            <th><?= __('Last Name') ?></th>
+                            <td><?= h($contact->last_name) ?></td>
+                        </tr>
+                        <tr>
+                            <th><?= __('Email') ?></th>
+                            <td><?= h($contact->email) ?></td>
+                        </tr>
+                        <tr>
+                            <th><?= __('Phone Number') ?></th>
+                            <td><?= h($contact->phone_number) ?></td>
+                        </tr>
+                    </table>
+                </div>
+                <div class="col-md-6">
+                    <table class="table">
+                        <tr>
+                            <th class="w-50"><?= __('Organisation') ?></th>
+                            <td>
+                                <?php if ($contact->hasValue('organisation')): ?>
+                                    <?= $this->Html->link(
+                                        h($contact->organisation->business_name),
+                                        ['controller' => 'Organisations', 'action' => 'view', $contact->organisation->id],
+                                        ['class' => 'text-primary']
+                                    ) ?>
+                                <?php else: ?>
+                                    <span class="text-muted">-</span>
+                                <?php endif; ?>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th><?= __('Contractor') ?></th>
+                            <td>
+                                <?php if ($contact->hasValue('contractor')): ?>
+                                    <?= $this->Html->link(
+                                        h($contact->contractor->first_name . ' ' . $contact->contractor->last_name),
+                                        ['controller' => 'Contractors', 'action' => 'view', $contact->contractor->id],
+                                        ['class' => 'text-primary']
+                                    ) ?>
+                                <?php else: ?>
+                                    <span class="text-muted">-</span>
+                                <?php endif; ?>
+                            </td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+
+            <?php if ($contact->message): ?>
+                <div class="card">
+                    <div class="card-header">
+                        <h5 class="mb-0"><?= __('Message') ?></h5>
+                    </div>
+                    <div class="card-body">
+                        <?= $this->Text->autoParagraph(h($contact->message)); ?>
+                    </div>
+                </div>
+            <?php endif; ?>
         </div>
     </div>
 </div>

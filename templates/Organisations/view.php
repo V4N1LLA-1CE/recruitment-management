@@ -43,16 +43,21 @@ $this->setLayout('admin')
                 </div>
             </div>
 
-            <?php if ($organisation->industry): ?>
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <h5 class="mb-0"><?= __('Industry') ?></h5>
-                    </div>
-                    <div class="card-body">
-                        <?= $this->Text->autoParagraph(h($organisation->industry)); ?>
-                    </div>
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0"><?= __('Industry') ?></h5>
                 </div>
-            <?php endif; ?>
+                <div class="card-body">
+                    <?php if ($organisation->industry): ?>
+                        <?= $this->Text->autoParagraph(h($organisation->industry)); ?>
+                    <?php else: ?>
+                        <div class="alert alert-info mb-0">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <?= __('No industry information has been provided for this organisation') ?>
+                        </div>
+                    <?php endif; ?>
+                </div>
+            </div>
 
             <?php if (!empty($organisation->contacts)): ?>
                 <div class="card mb-4">
@@ -90,12 +95,12 @@ $this->setLayout('admin')
                 </div>
             <?php endif; ?>
 
-            <?php if (!empty($organisation->projects)): ?>
-                <div class="card">
-                    <div class="card-header">
-                        <h5 class="mb-0"><?= __('Related Projects') ?></h5>
-                    </div>
-                    <div class="card-body">
+            <div class="card">
+                <div class="card-header">
+                    <h5 class="mb-0"><?= __('Related Projects') ?></h5>
+                </div>
+                <div class="card-body">
+                    <?php if (!empty($organisation->projects)): ?>
                         <div class="table-responsive">
                             <table class="table table-hover">
                                 <thead>
@@ -128,9 +133,14 @@ $this->setLayout('admin')
                                 </tbody>
                             </table>
                         </div>
-                    </div>
+                    <?php else: ?>
+                        <div class="alert alert-info mb-0">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <?= __('No projects are associated with this organisation') ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
-            <?php endif; ?>
+            </div>
         </div>
     </div>
 </div>

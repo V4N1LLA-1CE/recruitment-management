@@ -43,27 +43,32 @@ $this->setLayout('admin')
                 </div>
             </div>
 
-            <?php if (!empty($contractor->skills)): ?>
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <h5 class="mb-0"><?= __('Skills') ?></h5>
-                    </div>
-                    <div class="card-body">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0"><?= __('Skills') ?></h5>
+                </div>
+                <div class="card-body">
+                    <?php if (!empty($contractor->skills)): ?>
                         <div class="d-flex flex-wrap gap-2">
                             <?php foreach ($contractor->skills as $skill): ?>
                                 <span class="badge bg-info text-white mx-1"><?= h($skill->skill_name) ?></span>
                             <?php endforeach; ?>
                         </div>
-                    </div>
+                    <?php else: ?>
+                        <div class="alert alert-info mb-0">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <?= __('No skills have been added for this contractor') ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
-            <?php endif; ?>
+            </div>
 
-            <?php if (!empty($contractor->projects)): ?>
-                <div class="card mb-4">
-                    <div class="card-header">
-                        <h5 class="mb-0"><?= __('Related Projects') ?></h5>
-                    </div>
-                    <div class="card-body">
+            <div class="card mb-4">
+                <div class="card-header">
+                    <h5 class="mb-0"><?= __('Related Projects') ?></h5>
+                </div>
+                <div class="card-body">
+                    <?php if (!empty($contractor->projects)): ?>
                         <div class="table-responsive">
                             <table class="table table-hover">
                                 <thead>
@@ -94,9 +99,14 @@ $this->setLayout('admin')
                                 </tbody>
                             </table>
                         </div>
-                    </div>
+                    <?php else: ?>
+                        <div class="alert alert-info mb-0">
+                            <i class="fas fa-info-circle me-2"></i>
+                            <?= __('No projects are currently assigned to this contractor') ?>
+                        </div>
+                    <?php endif; ?>
                 </div>
-            <?php endif; ?>
+            </div>
 
             <?php if (!empty($contractor->contacts)): ?>
                 <div class="card">
