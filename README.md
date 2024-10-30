@@ -6,7 +6,7 @@ A comprehensive web application built with CakePHP 5.x for Nathan Jims' B2B recr
 
 ## Demo
 
-Coming soon
+https://github.com/user-attachments/assets/fa3fb84d-5d18-4cf5-8fcb-c5625040783f
 
 ## Instructions
 
