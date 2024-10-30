@@ -70,7 +70,11 @@ $this->layout = 'admin';
                 </div>
                 <div class="col-12">
                     <?= $this->Form->button(__('Search'), ['class' => 'btn btn-primary me-2']) ?>
-                    <?= $this->Html->link(__('Reset'), ['action' => 'index'], ['class' => 'btn btn-secondary']) ?>
+                    <?= $this->Html->link(
+                        __('Reset'),
+                        ['action' => 'index', '?' => ['limit' => $this->request->getQuery('limit', 10)]],
+                        ['class' => 'btn btn-secondary']
+                    ) ?>
                 </div>
                 <?= $this->Form->end() ?>
             </div>
@@ -83,14 +87,13 @@ $this->layout = 'admin';
                         10 => '10',
                         25 => '25',
                         50 => '50',
-                        'all' => 'All'
+                        PHP_INT_MAX => 'All'
                     ],
                     [
                         'id' => 'limit',
                         'class' => 'form-control mx-2 mb-1',
                         'style' => 'width: auto;',
                         'value' => $this->request->getQuery('limit', 10),
-                        'onChange' => 'window.location.href = window.location.pathname + "?limit=" + this.value'
                     ]
                 ) ?>
             </div>
@@ -213,9 +216,14 @@ $this->Html->scriptStart(['block' => true]);
 document.getElementById('limit').addEventListener('change', function() {
 // Get current URL parameters
 const urlParams = new URLSearchParams(window.location.search);
+
 // Update limit parameter
 urlParams.set('limit', this.value);
-// Redirect with all parameters
+
+// Always reset to page 1 when changing limit
+urlParams.delete('page');
+
+// Redirect with updated parameters
 window.location.href = window.location.pathname + '?' + urlParams.toString();
 });
 <?php $this->Html->scriptEnd(); ?>
