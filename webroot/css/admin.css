@@ -26,3 +26,31 @@
 .topbar {
     height: 4rem;
 }
+
+.pagination {
+    gap: 5px;
+}
+
+.pagination .page-link {
+    border-radius: 4px;
+    color: #4e73df;
+    padding: 0.5rem 0.75rem;
+}
+
+.pagination .active .page-link {
+    background-color: #4e73df;
+    border-color: #4e73df;
+    color: white;
+}
+
+.pagination .page-link:hover {
+    background-color: #eaecf4;
+    border-color: #dddfeb;
+    color: #2e59d9;
+}
+
+.pagination .disabled .page-link {
+    color: #858796;
+    background-color: #f8f9fc;
+    border-color: #dddfeb;
+}
