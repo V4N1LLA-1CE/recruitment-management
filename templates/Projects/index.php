@@ -118,67 +118,74 @@ $this->layout = 'admin';
 
             <!-- Results Table -->
             <div class="table-responsive">
-                <table class="table table-bordered table-hover">
-                    <thead class="bg-light">
-                        <tr>
-                            <th><?= $this->Paginator->sort('id', 'ID') ?></th>
-                            <th><?= $this->Paginator->sort('project_name', 'Project Name') ?></th>
-                            <th><?= $this->Paginator->sort('management_tool_link', 'Management Tool Link') ?></th>
-                            <th><?= $this->Paginator->sort('project_due_date', 'Due Date') ?></th>
-                            <th><?= $this->Paginator->sort('last_checked', 'Last Checked') ?></th>
-                            <th><?= $this->Paginator->sort('complete', 'Status') ?></th>
-                            <th>Contractor</th>
-                            <th>Organisation</th>
-                            <th>Skills Required</th>
-                            <th class="actions"><?= __('Actions') ?></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($projects as $project): ?>
+                <?php if (count($projects) > 0): ?>
+                    <table class="table table-bordered table-hover">
+                        <thead class="bg-light">
                             <tr>
-                                <td><?= $this->Number->format($project->id) ?></td>
-                                <td><?= h($project->project_name) ?></td>
-                                <td><?= h($project->management_tool_link) ?></td>
-                                <td><?= h($project->project_due_date) ?></td>
-                                <td><?= h($project->last_checked) ?></td>
-                                <td><?= $project->complete ? '<span class="badge bg-success">Completed</span>' : '<span class="badge bg-warning">In Progress</span>' ?></td>
-                                <td><?= $project->hasValue('contractor') ? $this->Html->link(($project->contractor->first_name . " " . $project->contractor->last_name), ['controller' => 'Contractors', 'action' => 'view', $project->contractor->id]) : '' ?></td>
-                                <td><?= $project->hasValue('organisation') ? $this->Html->link($project->organisation->business_name, ['controller' => 'Organisations', 'action' => 'view', $project->organisation->id]) : '' ?></td>
-                                <td>
-                                    <?php if (!empty($project->skills)): ?>
-                                        <div class="d-flex flex-wrap">
-                                            <?php foreach ($project->skills as $skill): ?>
-                                                <span class="badge bg-info text-white mx-1"><?= h($skill->skill_name) ?></span>
-                                            <?php endforeach; ?>
-                                        </div>
-                                    <?php endif; ?>
-                                </td>
-                                <td class="actions">
-                                    <?= $this->Html->link(
-                                        '<i class="fas fa-eye" style="font-size: 1.2rem;"></i>',
-                                        ['action' => 'view', $project->id],
-                                        ['escape' => false, 'class' => 'text-primary me-3', 'title' => 'View']
-                                    ) ?>
-                                    <?= $this->Html->link(
-                                        '<i class="fas fa-edit" style="font-size: 1.2rem;"></i>',
-                                        ['action' => 'edit', $project->id],
-                                        ['escape' => false, 'class' => 'text-secondary me-3', 'title' => 'Edit']
-                                    ) ?>
-                                    <?= $this->Form->postLink(
-                                        '<i class="fas fa-trash" style="font-size: 1.2rem;"></i>',
-                                        ['action' => 'delete', $project->id],
-                                        [
-                                            'confirm' => __('Are you sure you want to delete # {0}?', $project->id),
-                                            'escape' => false,
-                                            'class' => 'text-danger',
-                                            'title' => 'Delete'
-                                        ]
-                                    ) ?>
-                                </td>
+                                <th><?= $this->Paginator->sort('id', 'ID') ?></th>
+                                <th><?= $this->Paginator->sort('project_name', 'Project Name') ?></th>
+                                <th><?= $this->Paginator->sort('management_tool_link', 'Management Tool Link') ?></th>
+                                <th><?= $this->Paginator->sort('project_due_date', 'Due Date') ?></th>
+                                <th><?= $this->Paginator->sort('last_checked', 'Last Checked') ?></th>
+                                <th><?= $this->Paginator->sort('complete', 'Status') ?></th>
+                                <th>Contractor</th>
+                                <th>Organisation</th>
+                                <th>Skills Required</th>
+                                <th class="actions"><?= __('Actions') ?></th>
                             </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($projects as $project): ?>
+                                <tr>
+                                    <td><?= $this->Number->format($project->id) ?></td>
+                                    <td><?= h($project->project_name) ?></td>
+                                    <td><?= h($project->management_tool_link) ?></td>
+                                    <td><?= h($project->project_due_date) ?></td>
+                                    <td><?= h($project->last_checked) ?></td>
+                                    <td><?= $project->complete ? '<span class="badge bg-success">Completed</span>' : '<span class="badge bg-warning">In Progress</span>' ?></td>
+                                    <td><?= $project->hasValue('contractor') ? $this->Html->link(($project->contractor->first_name . " " . $project->contractor->last_name), ['controller' => 'Contractors', 'action' => 'view', $project->contractor->id]) : '' ?></td>
+                                    <td><?= $project->hasValue('organisation') ? $this->Html->link($project->organisation->business_name, ['controller' => 'Organisations', 'action' => 'view', $project->organisation->id]) : '' ?></td>
+                                    <td>
+                                        <?php if (!empty($project->skills)): ?>
+                                            <div class="d-flex flex-wrap">
+                                                <?php foreach ($project->skills as $skill): ?>
+                                                    <span class="badge bg-info text-white mx-1"><?= h($skill->skill_name) ?></span>
+                                                <?php endforeach; ?>
+                                            </div>
+                                        <?php endif; ?>
+                                    </td>
+                                    <td class="actions">
+                                        <?= $this->Html->link(
+                                            '<i class="fas fa-eye" style="font-size: 1.2rem;"></i>',
+                                            ['action' => 'view', $project->id],
+                                            ['escape' => false, 'class' => 'text-primary me-3', 'title' => 'View']
+                                        ) ?>
+                                        <?= $this->Html->link(
+                                            '<i class="fas fa-edit" style="font-size: 1.2rem;"></i>',
+                                            ['action' => 'edit', $project->id],
+                                            ['escape' => false, 'class' => 'text-secondary me-3', 'title' => 'Edit']
+                                        ) ?>
+                                        <?= $this->Form->postLink(
+                                            '<i class="fas fa-trash" style="font-size: 1.2rem;"></i>',
+                                            ['action' => 'delete', $project->id],
+                                            [
+                                                'confirm' => __('Are you sure you want to delete # {0}?', $project->id),
+                                                'escape' => false,
+                                                'class' => 'text-danger',
+                                                'title' => 'Delete'
+                                            ]
+                                        ) ?>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                <?php else: ?>
+                    <div class="alert alert-info" role="alert">
+                        <h4 class="alert-heading"><i class="fas fa-info-circle"></i> No Results Found</h4>
+                        <p class="mb-0">No projects match your search criteria. Try adjusting your filters or search terms.</p>
+                    </div>
+                <?php endif; ?>
             </div>
 
             <!-- Pagination -->

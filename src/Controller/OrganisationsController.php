@@ -18,8 +18,55 @@ class OrganisationsController extends AppController
      */
     public function index()
     {
-        $organisations = $this->Organisations->find()
-            ->all();
+        // Get limit for pagination
+        $limit = $this->request->getQuery('limit', 10);
+
+        // If 'all' is selected, get total count
+        if ($limit === 'all') {
+            $limit = PHP_INT_MAX;
+        }
+
+        // Base query with containments
+        $query = $this->Organisations->find()
+            ->contain(['Projects']);
+
+        // Apply organisation name filter
+        $name = trim($this->request->getQuery('name', ''));
+        if (!empty($name)) {
+            $query->where([
+                'business_name LIKE' => "%$name%"
+            ]);
+        }
+
+        // Apply sorting
+        $sort = $this->request->getQuery('sort');
+        if (!empty($sort)) {
+            switch ($sort) {
+                case 'name':
+                    $query->order(['business_name' => 'ASC']);
+                    break;
+                case 'projects':
+                    $query->select([
+                        'Organisations.id',
+                        'Organisations.business_name',
+                        'Organisations.contact_first_name',
+                        'Organisations.contact_last_name',
+                        'Organisations.contact_email',
+                        'Organisations.current_website',
+                        'project_count' => $query->func()->count('Projects.id')
+                    ])
+                        ->leftJoinWith('Projects')
+                        ->group(['Organisations.id'])
+                        ->order(['project_count' => 'DESC']);
+                    break;
+            }
+        }
+
+        // Set up pagination
+        $organisations = $this->paginate($query, [
+            'limit' => (int)$limit,
+            'maxLimit' => PHP_INT_MAX
+        ]);
 
         $this->set(compact('organisations'));
     }

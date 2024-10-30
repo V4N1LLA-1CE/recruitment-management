@@ -100,63 +100,70 @@ $this->layout = 'admin';
 
             <!-- Results Table -->
             <div class="table-responsive">
-                <table class="table table-bordered table-hover">
-                    <thead class="bg-light">
-                        <tr>
-                            <th><?= $this->Paginator->sort('id', 'ID') ?></th>
-                            <th><?= $this->Paginator->sort('first_name', 'First Name') ?></th>
-                            <th><?= $this->Paginator->sort('last_name', 'Last Name') ?></th>
-                            <th><?= $this->Paginator->sort('phone_number', 'Phone Number') ?></th>
-                            <th><?= $this->Paginator->sort('contractor_email', 'Email') ?></th>
-                            <th>Projects Count</th>
-                            <th>Skills</th>
-                            <th class="actions"><?= __('Actions') ?></th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                        <?php foreach ($contractors as $contractor): ?>
+                <?php if (count($contractors) > 0): ?>
+                    <table class="table table-bordered table-hover">
+                        <thead class="bg-light">
                             <tr>
-                                <td><?= $this->Number->format($contractor->id) ?></td>
-                                <td><?= h($contractor->first_name) ?></td>
-                                <td><?= h($contractor->last_name) ?></td>
-                                <td><?= h($contractor->phone_number) ?></td>
-                                <td><?= h($contractor->contractor_email) ?></td>
-                                <td><?= count($contractor->projects ?? []) ?></td>
-                                <td>
-                                    <?php if (!empty($contractor->skills)): ?>
-                                        <div class="d-flex flex-wrap ">
-                                            <?php foreach ($contractor->skills as $skill): ?>
-                                                <span class="badge bg-info text-white mx-1"><?= h($skill->skill_name) ?></span>
-                                            <?php endforeach; ?>
-                                        </div>
-                                    <?php endif; ?>
-                                </td>
-                                <td class="actions">
-                                    <?= $this->Html->link(
-                                        '<i class="fas fa-eye" style="font-size: 1.2rem;"></i>',
-                                        ['action' => 'view', $contractor->id],
-                                        ['escape' => false, 'class' => 'text-primary me-3', 'title' => 'View']
-                                    ) ?>
-                                    <?= $this->Html->link(
-                                        '<i class="fas fa-edit" style="font-size: 1.2rem;"></i>',
-                                        ['action' => 'edit', $contractor->id],
-                                        ['escape' => false, 'class' => 'text-secondary me-3', 'title' => 'Edit']
-                                    ) ?>
-                                    <?= $this->Form->postLink(
-                                        '<i class="fas fa-trash" style="font-size: 1.2rem;"></i>',
-                                        ['action' => 'delete', $contractor->id],
-                                        [
-                                            'confirm' => __('Are you sure you want to delete # {0}?', $contractor->id),
-                                            'escape' => false,
-                                            'class' => 'text-danger',
-                                            'title' => 'Delete'
-                                        ]
-                                    ) ?>
-                                </td>
+                                <th><?= $this->Paginator->sort('id', 'ID') ?></th>
+                                <th><?= $this->Paginator->sort('first_name', 'First Name') ?></th>
+                                <th><?= $this->Paginator->sort('last_name', 'Last Name') ?></th>
+                                <th><?= $this->Paginator->sort('phone_number', 'Phone Number') ?></th>
+                                <th><?= $this->Paginator->sort('contractor_email', 'Email') ?></th>
+                                <th>Projects Count</th>
+                                <th>Skills</th>
+                                <th class="actions"><?= __('Actions') ?></th>
                             </tr>
-                        <?php endforeach; ?>
-                    </tbody>
-                </table>
+                        </thead>
+                        <tbody>
+                            <?php foreach ($contractors as $contractor): ?>
+                                <tr>
+                                    <td><?= $this->Number->format($contractor->id) ?></td>
+                                    <td><?= h($contractor->first_name) ?></td>
+                                    <td><?= h($contractor->last_name) ?></td>
+                                    <td><?= h($contractor->phone_number) ?></td>
+                                    <td><?= h($contractor->contractor_email) ?></td>
+                                    <td><?= count($contractor->projects ?? []) ?></td>
+                                    <td>
+                                        <?php if (!empty($contractor->skills)): ?>
+                                            <div class="d-flex flex-wrap ">
+                                                <?php foreach ($contractor->skills as $skill): ?>
+                                                    <span class="badge bg-info text-white mx-1"><?= h($skill->skill_name) ?></span>
+                                                <?php endforeach; ?>
+                                            </div>
+                                        <?php endif; ?>
+                                    </td>
+                                    <td class="actions">
+                                        <?= $this->Html->link(
+                                            '<i class="fas fa-eye" style="font-size: 1.2rem;"></i>',
+                                            ['action' => 'view', $contractor->id],
+                                            ['escape' => false, 'class' => 'text-primary me-3', 'title' => 'View']
+                                        ) ?>
+                                        <?= $this->Html->link(
+                                            '<i class="fas fa-edit" style="font-size: 1.2rem;"></i>',
+                                            ['action' => 'edit', $contractor->id],
+                                            ['escape' => false, 'class' => 'text-secondary me-3', 'title' => 'Edit']
+                                        ) ?>
+                                        <?= $this->Form->postLink(
+                                            '<i class="fas fa-trash" style="font-size: 1.2rem;"></i>',
+                                            ['action' => 'delete', $contractor->id],
+                                            [
+                                                'confirm' => __('Are you sure you want to delete # {0}?', $contractor->id),
+                                                'escape' => false,
+                                                'class' => 'text-danger',
+                                                'title' => 'Delete'
+                                            ]
+                                        ) ?>
+                                    </td>
+                                </tr>
+                            <?php endforeach; ?>
+                        </tbody>
+                    </table>
+                <?php else: ?>
+                    <div class="alert alert-info" role="alert">
+                        <h4 class="alert-heading"><i class="fas fa-info-circle"></i> No Results Found</h4>
+                        <p class="mb-0">No contractos match your search criteria. Try adjusting your filters or search terms.</p>
+                    </div>
+                <?php endif; ?>
             </div>
 
             <div class="paginator">
