@@ -13,9 +13,9 @@ https://github.com/user-attachments/assets/fa3fb84d-5d18-4cf5-8fcb-c5625040783f
 ```bash
 # [WINDOWS] - clone repository into XAAMP htdocs
 # [MACOS] - clone repository into wherever Apache Httpd Server is installed i.e /opt/homebrew/var/www/<projecthere>
-https://git.infotech.monash.edu/fit2104/fit2104-2024-s2/group-assignment/Lab04_Group10/fit2104-assignment-5.git
+git clone https://github.com/V4N1LLA-1CE/recruitment-management.git
 
-cd fit2104-assignment-5 && composer install
+cd recruitment-management && composer install
 
 # Setup MySQL / MariaDB connection in app_local.php
 config/app_local.php
